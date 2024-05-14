@@ -69,10 +69,18 @@ namespace VUI
 
 
         private string BackgroundColor { get; set; } = "unset";
+
+        private string interactionState = "Normal";
         public string InteractionState 
         { 
-            get => throw new NotImplementedException(); 
-            set => throw new NotImplementedException(); 
+            get => interactionState; 
+            set
+            {
+                if (interactionState != value && value is not null) 
+                {
+                    interactionState = value;
+                }
+            } 
         }
 
         protected override void OnInitialized()
