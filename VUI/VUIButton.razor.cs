@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace VUI
 {
-    public partial class VUIButton
+    public partial class VUIButton : IUIElement
     {
 
         private string contentType = "text";
@@ -68,11 +68,12 @@ namespace VUI
         }
 
 
-        private string BackgroundColor { get; set; }
-
-
-
-
+        private string BackgroundColor { get; set; } = "unset";
+        public string InteractionState 
+        { 
+            get => throw new NotImplementedException(); 
+            set => throw new NotImplementedException(); 
+        }
 
         protected override void OnInitialized()
         {
@@ -81,8 +82,7 @@ namespace VUI
             BackgroundColor = normal_BackgroundColor;
         }
 
-
-        private async Task InternalOnClickHandler()
+        public async Task InternalOnClick()
         {
             if (OnClick.HasDelegate)
             {
@@ -90,7 +90,7 @@ namespace VUI
             }
         }
 
-        private async Task InternalOnMouseEnterHandler()
+        public async Task InternalOnMouseEnter()
         {
             BackgroundColor = MouseEnter_BackgroundColor;
 
@@ -100,7 +100,7 @@ namespace VUI
             }
         }
 
-        private async Task InternalOnMouseLeaveHandler()
+        public async Task InternalOnMouseLeave()
         {
             BackgroundColor = Normal_BackgroundColor;
 
