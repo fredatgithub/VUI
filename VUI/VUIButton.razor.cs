@@ -79,11 +79,14 @@ namespace VUI
         {
             base.OnInitialized();
 
+            InteractionState = "normal";
             BackgroundColor = normal_BackgroundColor;
         }
 
         public async Task InternalOnClick()
         {
+            InteractionState = "clicked";
+
             if (OnClick.HasDelegate)
             {
                 await OnClick.InvokeAsync(this);
@@ -92,6 +95,8 @@ namespace VUI
 
         public async Task InternalOnMouseEnter()
         {
+            InteractionState = "mouse-enter";
+
             BackgroundColor = MouseEnter_BackgroundColor;
 
             if (OnMouseEnter.HasDelegate)
@@ -102,6 +107,8 @@ namespace VUI
 
         public async Task InternalOnMouseLeave()
         {
+            InteractionState = "mouse-leave";
+
             BackgroundColor = Normal_BackgroundColor;
 
             if (OnMouseLeave.HasDelegate)
