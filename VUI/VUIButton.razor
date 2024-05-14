@@ -36,9 +36,9 @@
 
 
     [Parameter] public string Text { get; set; } = "Button";
-    [Parameter] public EventCallback OnClick { get; set; }
-    [Parameter] public EventCallback OnMouseEnter { get; set; }
-    [Parameter] public EventCallback OnMouseLeave { get; set; }
+    [Parameter] public EventCallback<VUIButton> OnClick { get; set; }
+    [Parameter] public EventCallback<VUIButton> OnMouseEnter { get; set; }
+    [Parameter] public EventCallback<VUIButton> OnMouseLeave { get; set; }
 
 
     private string mouseEnter_BackgroundColor = "unset";
@@ -94,7 +94,7 @@
     {
         if (OnClick.HasDelegate)
         {
-            await OnClick.InvokeAsync(null);
+            await OnClick.InvokeAsync(this);
         }
     }
 
@@ -104,7 +104,7 @@
         
         if (OnMouseEnter.HasDelegate)
         {
-            await OnMouseEnter.InvokeAsync(null);
+            await OnMouseEnter.InvokeAsync(this);
         }
     }
 
@@ -114,7 +114,7 @@
         
         if (OnMouseLeave.HasDelegate)
         {
-            await OnMouseLeave.InvokeAsync(null);
+            await OnMouseLeave.InvokeAsync(this);
         }
     }
 }
