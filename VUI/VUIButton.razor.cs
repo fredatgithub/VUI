@@ -26,6 +26,7 @@ namespace VUI
 
         [Parameter] public string Text { get; set; } = "Button";
         [Parameter] public EventCallback<VUIButton> OnClick { get; set; }
+        [Parameter] public EventCallback<VUIButton> OnToggled { get; set; }
         [Parameter] public EventCallback<VUIButton> OnMouseEnter { get; set; }
         [Parameter] public EventCallback<VUIButton> OnMouseLeave { get; set; }
 
@@ -67,9 +68,6 @@ namespace VUI
             }
         }
 
-
-        private string BackgroundColor { get; set; } = "unset";
-
         private string interactionState = "Normal";
         public string InteractionState 
         { 
@@ -83,6 +81,77 @@ namespace VUI
             } 
         }
 
+        private string mouseLeave_BackgroundColor;
+        [Parameter] 
+        public string MouseLeave_BackgroundColor 
+        {
+            get => mouseLeave_BackgroundColor;
+            set
+            {
+                if (mouseLeave_BackgroundColor != value && value is not null)
+                {
+                    mouseLeave_BackgroundColor = value;
+                }
+            }
+        }
+
+        private string clicked_BackgroundColor;
+        [Parameter]
+        public string Clicked_BackgroundColor 
+        {
+            get => clicked_BackgroundColor;
+            set
+            {
+                if (clicked_BackgroundColor != value && value is not null)
+                {
+                    clicked_BackgroundColor = value;
+                }
+            }
+        }
+
+        private string toggled_BackgroundColor;
+        [Parameter]
+        public string Toggled_BackgroundColor 
+        {
+            get => toggled_BackgroundColor;
+            set
+            {
+                if (toggled_BackgroundColor != value && value is not null)
+                {
+                    toggled_BackgroundColor = value;
+                }
+            }
+        }
+
+        private string backgroundColor = "unset";
+
+        [Parameter]
+        public string BackgroundColor
+        { 
+            get => backgroundColor;
+            
+            set
+            {
+                if (backgroundColor != value && value is not null)
+                {
+                    backgroundColor = value;
+                }
+            } 
+        }
+
+        private bool isTransitioned = false;
+
+        public bool IsTransitioned
+        {
+            get => isTransitioned;
+
+            set
+            {
+                isTransitioned = value;
+            }
+        }
+
+
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -93,6 +162,8 @@ namespace VUI
 
         public async Task InternalOnClick()
         {
+            if (IsTransitioned) return;
+            
             InteractionState = "Clicked";
 
             if (OnClick.HasDelegate)
@@ -103,6 +174,8 @@ namespace VUI
 
         public async Task InternalOnMouseEnter()
         {
+            if (IsTransitioned) return;
+
             InteractionState = "MouseEnter";
 
             BackgroundColor = MouseEnter_BackgroundColor;
@@ -115,6 +188,8 @@ namespace VUI
 
         public async Task InternalOnMouseLeave()
         {
+            if (IsTransitioned) return;
+
             InteractionState = "MouseLeave";
 
             BackgroundColor = Normal_BackgroundColor;
@@ -123,6 +198,29 @@ namespace VUI
             {
                 await OnMouseLeave.InvokeAsync(this);
             }
+        }
+
+        public async Task TransitionTo(string _interactionState)
+        {
+            switch(_interactionState)
+            {
+                case "Toggled":
+
+                    IsTransitioned = true;
+                    InteractionState = _interactionState;
+
+                    if (OnToggled.HasDelegate)
+                    {
+                        await OnToggled.InvokeAsync(this);
+                    }
+
+                    break;
+            }
+        }
+
+        public void StopTransition()
+        {
+            isTransitioned = false;
         }
     }
 }
