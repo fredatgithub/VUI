@@ -208,7 +208,7 @@ namespace VUI
 
             InteractionState = "MouseEnter";
 
-            BackgroundColor = MouseEnter_BackgroundColor;
+            TransitionManager.Handle(this);
 
             if (OnMouseEnter.HasDelegate)
             {
@@ -220,9 +220,9 @@ namespace VUI
         {
             if (IsTransitioned) return;
 
-            InteractionState = "MouseLeave";
+            InteractionState = "Normal";
 
-            BackgroundColor = Normal_BackgroundColor;
+            TransitionManager.Handle(this);
 
             if (OnMouseLeave.HasDelegate)
             {
