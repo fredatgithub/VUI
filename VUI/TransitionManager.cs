@@ -32,18 +32,28 @@ namespace VUI
 
                     switch (e.InteractionState + "_BackgroundColor")
                     {
-                        case "MouseUp_BackgroundColor":
-                        case "Normal_BackgroundColor":                        
+                        case "Normal_BackgroundColor":
                             e.BackgroundColor = e.Normal_BackgroundColor;
                             break;
 
                         case "Clicked_BackgroundColor":
+                            e.BackgroundColor = e.Clicked_BackgroundColor;
+                            break;
+
+                        case "MouseLeave_BackgroundColor":
+                            e.BackgroundColor = e.MouseLeave_BackgroundColor;
+                            break;
+
                         case "MouseEnter_BackgroundColor":
                             e.BackgroundColor = e.MouseEnter_BackgroundColor;
                             break;
 
                         case "MouseDown_BackgroundColor":
-                            e.BackgroundColor = e.Clicked_BackgroundColor;
+                            e.BackgroundColor = e.MouseDown_BackgroundColor;
+                            break;
+
+                        case "MouseUp_BackgroundColor":
+                            e.BackgroundColor = e.MouseUp_BackgroundColor;
                             break;
                     }
                     break;
