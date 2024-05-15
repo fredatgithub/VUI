@@ -40,15 +40,54 @@ namespace VUI
         string ContentType { get; set; }
 
 
-        public string MouseEnter_BackgroundColor { get; set; }
-        public string MouseLeave_BackgroundColor { get; set; }
-        public string Normal_BackgroundColor { get; set; }
-        public string Clicked_BackgroundColor { get; set; }
-        public string Toggled_BackgroundColor { get; set; }
+        string MouseEnter_BackgroundColor { get; set; }
+        string MouseLeave_BackgroundColor { get; set; }
+        string Normal_BackgroundColor { get; set; }
+        string Clicked_BackgroundColor { get; set; }
+        string Toggled_BackgroundColor { get; set; }
 
-        public string BackgroundColor { get; set; }
+        string BackgroundColor { get; set; }
 
         bool IsTransitioned { get; set; }
+
+        /// <summary>
+        /// Represents the transition of a UI element. 
+        /// The possible transitions are:
+        /// <list type="bullet">
+        /// 
+        /// <item>
+        /// <description>"None": This will not cause any action when 
+        /// a change between states of the UI element occurs.</description>
+        /// </item>
+        /// 
+        /// <item>
+        /// <description>"Color": This will change the foreground and background colors of 
+        /// one state to match the colors of another state.</description>
+        /// </item>
+        /// 
+        /// </list>
+        /// </summary>
+        string Transition { get; set; }
+
+
+        /// <summary>
+        /// Represents the transition type of a UI element. 
+        /// The possible transition types are:
+        /// <list type="bullet">
+        /// 
+        /// <item>
+        /// <description>"UIState": This is triggered when 
+        /// a state change occurs in the UI element.</description>
+        /// </item>
+        /// 
+        /// <item>
+        /// <description>"UserDecision": This allows users to decide 
+        /// the action when a state change in the UI element.</description>
+        /// </item>
+        /// 
+        /// </list>
+        /// </summary>
+        string TransitionType { get; set; }
 
 
         //
