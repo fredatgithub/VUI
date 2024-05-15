@@ -151,6 +151,31 @@ namespace VUI
             }
         }
 
+        private string transition = "Color";
+        public string Transition 
+        { 
+            get => transition; 
+            set
+            {
+                if (transition != value && !string.IsNullOrEmpty(value))
+                {
+                    transition = value;
+                }
+            }
+        }
+
+        private string transitionType = "UIState";
+        public string TransitionType 
+        { 
+            get => transitionType; 
+            set
+            {
+                if (transitionType != value && !string.IsNullOrEmpty(value))
+                {
+                    transitionType = value;
+                }
+            }
+        }
 
         protected override void OnInitialized()
         {
@@ -165,6 +190,11 @@ namespace VUI
             if (IsTransitioned) return;
             
             InteractionState = "Clicked";
+
+            TransitionManager.Handle(this);
+
+            BackgroundColor = Clicked_BackgroundColor;
+
 
             if (OnClick.HasDelegate)
             {
