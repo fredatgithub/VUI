@@ -19,7 +19,7 @@ namespace VUI
                     {
                         case "Color":
 
-                            switch (e.InteractionState + "BackgroundColor")
+                            switch (e.InteractionState + "_BackgroundColor")
                             {
                                 case "Normal_BackgroundColor":
                                     e.BackgroundColor = e.Normal_BackgroundColor;
