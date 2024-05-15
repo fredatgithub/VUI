@@ -25,11 +25,12 @@ namespace VUI
 
 
         [Parameter] public string Text { get; set; } = "Button";
-        [Parameter] public EventCallback<VUIButton> OnClick { get; set; }
+        [Parameter] public EventCallback<VUIButton> OnClicked { get; set; }
         [Parameter] public EventCallback<VUIButton> OnToggled { get; set; }
         [Parameter] public EventCallback<VUIButton> OnMouseEnter { get; set; }
         [Parameter] public EventCallback<VUIButton> OnMouseLeave { get; set; }
-
+        [Parameter] public EventCallback<VUIButton> OnMouseUp { get; set; }
+        [Parameter] public EventCallback<VUIButton> OnMouseDown { get; set; }
 
         private string mouseEnter_BackgroundColor = "unset";
         /// <summary>
@@ -185,7 +186,7 @@ namespace VUI
             BackgroundColor = normal_BackgroundColor;
         }
 
-        public async Task InternalOnClick()
+        public async Task InternalOnClicked()
         {
             if (IsTransitioned) return;
             
@@ -193,13 +194,13 @@ namespace VUI
 
             TransitionManager.Handle(this);
 
-            BackgroundColor = Clicked_BackgroundColor;
-
-
-            if (OnClick.HasDelegate)
+            if (OnClicked.HasDelegate)
             {
-                await OnClick.InvokeAsync(this);
+                await OnClicked.InvokeAsync(this);
             }
+
+            await Task.Yield();
+            StateHasChanged();
         }
 
         public async Task InternalOnMouseEnter()
@@ -214,6 +215,9 @@ namespace VUI
             {
                 await OnMouseEnter.InvokeAsync(this);
             }
+
+            await Task.Yield();
+            StateHasChanged();
         }
 
         public async Task InternalOnMouseLeave()
@@ -228,7 +232,45 @@ namespace VUI
             {
                 await OnMouseLeave.InvokeAsync(this);
             }
+
+            await Task.Yield();
+            StateHasChanged();
         }
+
+        public async Task InternalOnMouseUp()
+        {
+            if (IsTransitioned) return;
+
+            InteractionState = "MouseUp";
+
+            TransitionManager.Handle(this);
+
+            if (OnMouseUp.HasDelegate)
+            {
+                await OnMouseUp.InvokeAsync(this);
+            }
+
+            await Task.Yield();
+            StateHasChanged();
+        }
+
+        public async Task InternalOnMouseDown()
+        {
+            if (IsTransitioned) return;
+
+            InteractionState = "MouseDown";
+
+            TransitionManager.Handle(this);
+
+            if (OnMouseDown.HasDelegate)
+            {
+                await OnMouseDown.InvokeAsync(this);
+            }
+
+            await Task.Yield();
+            StateHasChanged();
+        }
+
 
         public async Task TransitionTo(string _interactionState)
         {
