@@ -32,6 +32,12 @@ namespace VUI
         /// <item>
         /// <description>"MouseLeave": The state when the mouse pointer leaves the UI element.</description>
         /// </item>
+        /// <item>
+        /// <description>"MouseDown": This state is triggered when the mouse button is pressed while the cursor is over the UI element.</description>
+        /// </item>
+        /// <item>
+        /// <description>"MouseUp": This state is triggered when the mouse button is released after it was pressed over the UI element.</description>
+        /// </item>
         /// </list>
         /// </summary>
         string InteractionState { get; set; }
@@ -42,6 +48,9 @@ namespace VUI
 
         string MouseEnter_BackgroundColor { get; set; }
         string MouseLeave_BackgroundColor { get; set; }
+        string MouseDown_BackgroundColor { get; set; }
+        string MouseUp_BackgroundColor { get; set; }
+
         string Normal_BackgroundColor { get; set; }
         string Clicked_BackgroundColor { get; set; }
         string Toggled_BackgroundColor { get; set; }
