@@ -19,9 +19,48 @@ To use VUI in your Blazor application, follow these steps:
 2. Import the necessary VUI components in your Razor files.
 3. Use the VUI components as needed in your application.
 
-## Examples
+## Live Demo with WeExpressIt
 
-Here are some examples of how to use the VUI components in your Blazor app:
+Experience the power and flexibility of VUI components in action with our live demo application, WeExpressIt. Follow the steps below to see how VUI enhances Blazor apps:
+
+Visit the WeExpressIt app at WeExpressIt Live Demo.
+Explore the various UI components in a real-world context.
+See how VUI components can be customized and integrated seamlessly.
+
+Code Examples from WeExpressIt
+Dive into the code behind WeExpressIt to understand the implementation of VUI components:
 
 ```csharp
-// Add code examples here
+@page "/counter"
+@using VUI
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+
+<VUI.VUIButton Text="Click me"
+               Normal_BackgroundColor="#0000ff"
+               MouseEnter_BackgroundColor="#00ff00"
+               Clicked_BackgroundColor="#ff0000"
+               OnClicked="onclicked"
+               OnMouseUp="onmouseup"/>
+
+<p role="status">Current count: @currentCount</p>
+
+@code {
+
+    private int currentCount = 0;
+
+
+    private void onclicked(VUIButton btn)
+    {
+        currentCount++;
+    }
+
+    private void onmouseup(VUIButton btn)
+    {
+        StateHasChanged();
+    }
+}
