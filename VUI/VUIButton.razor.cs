@@ -32,6 +32,7 @@ namespace VUI
         [Parameter] public EventCallback<VUIButton> OnMouseUp { get; set; }
         [Parameter] public EventCallback<VUIButton> OnMouseDown { get; set; }
 
+
         private string mouseEnter_BackgroundColor = "unset";
         /// <summary>
         /// Gets and sets the Background-Color that is applied when 
@@ -46,6 +47,48 @@ namespace VUI
                 if (mouseEnter_BackgroundColor != value && value is not null)
                 {
                     mouseEnter_BackgroundColor = value;
+                }
+            }
+        }
+
+        private string mouseLeave_BackgroundColor = "unset";
+        [Parameter]
+        public string MouseLeave_BackgroundColor
+        {
+            get => mouseLeave_BackgroundColor;
+            set
+            {
+                if (mouseLeave_BackgroundColor != value && value is not null)
+                {
+                    mouseLeave_BackgroundColor = value;
+                }
+            }
+        }
+
+        private string mouseDown_BackgroundColor = "unset";
+        [Parameter]
+        public string MouseDown_BackgroundColor
+        {
+            get => mouseDown_BackgroundColor;
+            set
+            {
+                if (mouseDown_BackgroundColor != value && value is not null)
+                {
+                    mouseDown_BackgroundColor = value;
+                }
+            }
+        }
+
+        private string mouseUp_BackgroundColor = "unset";
+        [Parameter]
+        public string MouseUp_BackgroundColor
+        {
+            get => mouseUp_BackgroundColor;
+            set
+            {
+                if (mouseUp_BackgroundColor != value && value is not null)
+                {
+                    mouseUp_BackgroundColor = value;
                 }
             }
         }
@@ -69,34 +112,8 @@ namespace VUI
             }
         }
 
-        private string interactionState = "Normal";
-        public string InteractionState 
-        { 
-            get => interactionState; 
-            set
-            {
-                if (interactionState != value && value is not null) 
-                {
-                    interactionState = value;
-                }
-            } 
-        }
 
-        private string mouseLeave_BackgroundColor;
-        [Parameter] 
-        public string MouseLeave_BackgroundColor 
-        {
-            get => mouseLeave_BackgroundColor;
-            set
-            {
-                if (mouseLeave_BackgroundColor != value && value is not null)
-                {
-                    mouseLeave_BackgroundColor = value;
-                }
-            }
-        }
-
-        private string clicked_BackgroundColor;
+        private string clicked_BackgroundColor = "unset";
         [Parameter]
         public string Clicked_BackgroundColor 
         {
@@ -110,7 +127,7 @@ namespace VUI
             }
         }
 
-        private string toggled_BackgroundColor;
+        private string toggled_BackgroundColor = "unset";
         [Parameter]
         public string Toggled_BackgroundColor 
         {
@@ -139,6 +156,21 @@ namespace VUI
                 }
             } 
         }
+
+
+        private string interactionState = "Normal";
+        public string InteractionState
+        {
+            get => interactionState;
+            set
+            {
+                if (interactionState != value && value is not null)
+                {
+                    interactionState = value;
+                }
+            }
+        }
+
 
         private bool isTransitioned = false;
 
@@ -224,7 +256,7 @@ namespace VUI
         {
             if (IsTransitioned) return;
 
-            InteractionState = "Normal";
+            InteractionState = "MouseLeave";
 
             TransitionManager.Handle(this);
 
