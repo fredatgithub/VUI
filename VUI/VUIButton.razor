@@ -2,9 +2,11 @@
 {
     case "text":
 
-        <button @onclick="InternalOnClick"
+        <button @onclick="InternalOnClicked"
                 @onmouseenter="InternalOnMouseEnter"
                 @onmouseleave="InternalOnMouseLeave"
+                @onmouseup="InternalOnMouseUp"
+                @onmousedown="InternalOnMouseDown"
                 style="background-color:@BackgroundColor;
                        border:none;">
             @Text
