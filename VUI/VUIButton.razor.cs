@@ -172,18 +172,6 @@ namespace VUI
         }
 
 
-        private bool isTransitioned = false;
-
-        public bool IsTransitioned
-        {
-            get => isTransitioned;
-
-            set
-            {
-                isTransitioned = value;
-            }
-        }
-
         private string transition = "Color";
         public string Transition 
         { 
@@ -203,12 +191,14 @@ namespace VUI
             get => transitionType; 
             set
             {
-                if (transitionType != value && !string.IsNullOrEmpty(value))
+                if (transitionType != value && 
+                    !string.IsNullOrEmpty(value))
                 {
                     transitionType = value;
                 }
             }
         }
+
 
         protected override void OnInitialized()
         {
@@ -220,7 +210,11 @@ namespace VUI
 
         public async Task InternalOnClicked()
         {
-            if (IsTransitioned) return;
+            if (skipTransitionStates.Contains("All") || 
+                skipTransitionStates.Contains("Clicked")) 
+            { 
+                return; 
+            }
             
             InteractionState = "Clicked";
 
@@ -231,13 +225,16 @@ namespace VUI
                 await OnClicked.InvokeAsync(this);
             }
 
-            await Task.Yield();
             StateHasChanged();
         }
 
         public async Task InternalOnMouseEnter()
         {
-            if (IsTransitioned) return;
+            if (skipTransitionStates.Contains("All") || 
+                skipTransitionStates.Contains("MouseEnter"))
+            {
+                return;
+            }
 
             InteractionState = "MouseEnter";
 
@@ -248,13 +245,16 @@ namespace VUI
                 await OnMouseEnter.InvokeAsync(this);
             }
 
-            await Task.Yield();
             StateHasChanged();
         }
 
         public async Task InternalOnMouseLeave()
         {
-            if (IsTransitioned) return;
+            if (skipTransitionStates.Contains("All") || 
+                skipTransitionStates.Contains("MouseLeave"))
+            {
+                return;
+            }
 
             InteractionState = "MouseLeave";
 
@@ -265,13 +265,16 @@ namespace VUI
                 await OnMouseLeave.InvokeAsync(this);
             }
 
-            await Task.Yield();
             StateHasChanged();
         }
 
         public async Task InternalOnMouseUp()
         {
-            if (IsTransitioned) return;
+            if (skipTransitionStates.Contains("All") || 
+                skipTransitionStates.Contains("MouseUp"))
+            {
+                return;
+            }
 
             InteractionState = "MouseUp";
 
@@ -282,13 +285,16 @@ namespace VUI
                 await OnMouseUp.InvokeAsync(this);
             }
 
-            await Task.Yield();
             StateHasChanged();
         }
 
         public async Task InternalOnMouseDown()
         {
-            if (IsTransitioned) return;
+            if (skipTransitionStates.Contains("All") || 
+                skipTransitionStates.Contains("MouseDown"))
+            {
+                return;
+            }
 
             InteractionState = "MouseDown";
 
@@ -299,32 +305,43 @@ namespace VUI
                 await OnMouseDown.InvokeAsync(this);
             }
 
-            await Task.Yield();
             StateHasChanged();
         }
 
+        string[] skipTransitionStates = [];
 
-        public async Task TransitionTo(string _interactionState)
+
+        /// <summary>
+        /// Transitions the UI element to a specified interaction state 
+        /// with optional delays and skipping certain states.
+        /// </summary>
+        /// <param name="msDelayBefore">The delay in milliseconds before 
+        /// the transition.</param>
+        /// <param name="_interactionState">The interaction state to 
+        /// transition to.</param>
+        /// <param name="msDelayAfter">The delay in milliseconds after 
+        /// the transition.</param>
+        /// <param name="_skippingTransitionStates">The states to be 
+        /// skipped during the transition.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        public async Task TransitionTo(int msDelayBefore, string _interactionState, int msDelayAfter,
+            string[] _skippingTransitionStates)
         {
-            switch(_interactionState)
-            {
-                case "Toggled":
+            skipTransitionStates = _skippingTransitionStates;
 
-                    IsTransitioned = true;
-                    InteractionState = _interactionState;
+            await Task.Delay(msDelayBefore);
+            InteractionState = _interactionState;
 
-                    if (OnToggled.HasDelegate)
-                    {
-                        await OnToggled.InvokeAsync(this);
-                    }
+            TransitionManager.Handle(this);
 
-                    break;
-            }
+            StateHasChanged();
+            await Task.Delay(msDelayAfter);
         }
 
         public void StopTransition()
         {
-            isTransitioned = false;
+            skipTransitionStates = [];
+            StateHasChanged();
         }
     }
 }
