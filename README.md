@@ -35,32 +35,48 @@ Dive into the code behind WeExpressIt to understand the implementation of VUI co
 @using VUI
 @rendermode InteractiveWebAssembly
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Demo Counter with VUIButton</PageTitle>
 
-<h1>Counter</h1>
+<h1>Demo Counter with VUIButton</h1>
 
+<select @bind="transitionType">
+    <option>UIState</option>
+    <option>UserDecision</option>
+</select>
 
 <VUI.VUIButton Text="Click me"
-               Normal_BackgroundColor="#0000ff"
+               TransitionType="@transitionType"
+               Normal_BackgroundColor="#00ffff" 
+               Clicked_BackgroundColor="#9900cc"
                MouseEnter_BackgroundColor="#00ff00"
-               Clicked_BackgroundColor="#ff0000"
-               OnClicked="onclicked"
-               OnMouseUp="onmouseup"/>
+               MouseLeave_BackgroundColor="#ffff00"
+               MouseDown_BackgroundColor="#ff0066"
+               MouseUp_BackgroundColor="#ff00ff"
+               OnClicked="OnClicked"
+               OnMouseDown="OnMouseDown"
+               OnMouseLeave="OnMouseLeave" />
 
 <p role="status">Current count: @currentCount</p>
 
 @code {
 
     private int currentCount = 0;
+    private string transitionType = "UIState";
 
-
-    private void onclicked(VUIButton btn)
+    private void OnClicked(VUIButton btn)
     {
         currentCount++;
     }
 
-    private void onmouseup(VUIButton btn)
+    private async void OnMouseDown(VUIButton btn)
     {
-        StateHasChanged();
+        await TransitionManager.TransitionTo(btn, 0, "MouseDown", 0, new string[] { "Clicked" });        
+    }
+
+    private async void OnMouseLeave(VUIButton btn)
+    {
+        await TransitionManager.TransitionTo(btn, 300, "Normal", 0, new string[] { "All" });
+
+        TransitionManager.StopTransition(btn);
     }
 }
