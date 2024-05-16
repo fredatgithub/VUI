@@ -317,6 +317,20 @@ namespace VUI
                 skipTransitionStates = value;
                 StateHasChanged();
             }
-        }        
+        }
+
+        public string contentPath = string.Empty;
+        public string ContentPath 
+        { 
+            get => contentPath; 
+            set
+            {
+                if (contentPath != value && !string.IsNullOrEmpty(value)) 
+                {
+                    contentPath = value;
+                    StateHasChanged();
+                }
+            }
+        }
     }
 }
