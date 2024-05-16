@@ -12,7 +12,7 @@ namespace VUI
             get => contentType;
             set
             {
-                if (contentType != value && value is not null)
+                if (contentType != value && !string.IsNullOrEmpty(value))
                 {
                     contentType = value;
                 }
