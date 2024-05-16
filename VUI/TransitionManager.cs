@@ -91,6 +91,8 @@ namespace VUI
         /// Transitions the UI element to a specified interaction state 
         /// with optional delays and skipping certain states.
         /// </summary>
+        /// <param name="e">The UI element that will be transitioned to a new InteractionState. 
+        /// The TransitionManager's Handle function will be invoked for this element.</param>
         /// <param name="msDelayBefore">The delay in milliseconds before 
         /// the transition.</param>
         /// <param name="_interactionState">The interaction state to 
