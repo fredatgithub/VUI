@@ -1,6 +1,6 @@
 ﻿@switch(contentType)
 {
-    case "text":
+    case "Text":
 
         <button @onclick="InternalOnClicked"
                 @onmouseenter="InternalOnMouseEnter"
@@ -12,5 +12,19 @@
             @Text
         </button>
 
-    break;
+        break;
+
+    case "Image":
+
+        <button @onclick="InternalOnClicked"
+                @onmouseenter="InternalOnMouseEnter"
+                @onmouseleave="InternalOnMouseLeave"
+                @onmouseup="InternalOnMouseUp"
+                @onmousedown="InternalOnMouseDown"
+                style="background-color:@BackgroundColor;
+                       border:none;">
+            <img src="@ContentPath" />
+        </button>
+
+        break;
 }
