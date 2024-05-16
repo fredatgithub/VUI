@@ -18,25 +18,35 @@ namespace VUI
         /// The possible states are:
         /// <list type="bullet">
         /// <item>
+        /// <description>"All": Represents all possible states of the UI element. 
+        /// Useful for operations that all to all states.</description>
+        /// </item>
+        /// <item>
         /// <description>"Normal": The default state of the UI element.</description>
         /// </item>
         /// <item>
-        /// <description>"Clicked": The state when the UI element is clicked.</description>
+        /// <description>"Clicked": The state when 
+        /// the UI element is clicked.</description>
         /// </item>
         /// <item>
-        /// <description>"Toggled": The state when the UI elemnt is toggled on or off.</description>
+        /// <description>"Toggled": The state when 
+        /// the UI elemnt is toggled on or off.</description>
         /// </item>
         /// <item>
-        /// <description>"MouseEnter": The state when the mouse pointer enters the UI element.</description>
+        /// <description>"MouseEnter": The state when 
+        /// the mouse pointer enters the UI element.</description>
         /// </item>
         /// <item>
-        /// <description>"MouseLeave": The state when the mouse pointer leaves the UI element.</description>
+        /// <description>"MouseLeave": The state when 
+        /// the mouse pointer leaves the UI element.</description>
         /// </item>
         /// <item>
-        /// <description>"MouseDown": This state is triggered when the mouse button is pressed while the cursor is over the UI element.</description>
+        /// <description>"MouseDown": This state is triggered when 
+        /// the mouse button is pressed while the cursor is over the UI element.</description>
         /// </item>
         /// <item>
-        /// <description>"MouseUp": This state is triggered when the mouse button is released after it was pressed over the UI element.</description>
+        /// <description>"MouseUp": This state is triggered when 
+        /// the mouse button is released after it was pressed over the UI element.</description>
         /// </item>
         /// </list>
         /// </summary>
@@ -57,7 +67,6 @@ namespace VUI
 
         string BackgroundColor { get; set; }
 
-        bool IsTransitioned { get; set; }
 
         /// <summary>
         /// Represents the transition of a UI element. 
@@ -114,7 +123,8 @@ namespace VUI
         /// </summary>
         /// <param name="_interactionState">The state to which the InteractionState will transition.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        Task TransitionTo(string _interactionState);
+        Task TransitionTo(int msDelayBefore, string _interactionState, int msDelayAfter,
+            string[] _transitionStates);
 
         void StopTransition();
     }
