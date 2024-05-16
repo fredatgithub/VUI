@@ -65,6 +65,15 @@ namespace VUI
         string ContentType { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets the path to the content file. 
+        /// This property is used for various content types 
+        /// such as music, video, images, etc.
+        /// The value should be a valid file path pointing to the content file.
+        /// </summary>
+        string ContentPath { get; set; }
+
+
         string MouseEnter_BackgroundColor { get; set; }
         string MouseLeave_BackgroundColor { get; set; }
         string MouseDown_BackgroundColor { get; set; }
