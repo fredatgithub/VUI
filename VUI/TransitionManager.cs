@@ -97,11 +97,11 @@ namespace VUI
         /// transition to.</param>
         /// <param name="msDelayAfter">The delay in milliseconds after 
         /// the transition.</param>
-        /// <param name="_skippingTransitionStates">The states to be 
+        /// <param name="skipTransitionStates">The states to be 
         /// skipped during the transition.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
         public static async Task TransitionTo(IUIElement e, int msDelayBefore, string _interactionState, int msDelayAfter,
-            string[] _skippingTransitionStates)
+            string[] skipTransitionStates)
         {
             switch (e.TransitionType)
             {
@@ -111,7 +111,7 @@ namespace VUI
 
                 case "UserDecision":
 
-                    e.SkipTransitionStates = _skippingTransitionStates;
+                    e.SkipTransitionStates = skipTransitionStates;
 
                     await Task.Delay(msDelayBefore);
                     e.InteractionState = _interactionState;
