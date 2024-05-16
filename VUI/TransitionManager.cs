@@ -16,15 +16,42 @@ namespace VUI
                 case "UIState":
 
                     Handle_UIState(e);
-
                     break;
 
                 case "UserDecision":
+
+                    Handle_UserDecision(e);
                     break;
             }
         }
 
         private static void Handle_UIState(IUIElement e)
+        {
+            switch (e.Transition)
+            {
+                case "Color":
+
+                    switch (e.InteractionState + "_BackgroundColor")
+                    {
+                        case "MouseLeave_BackgroundColor":
+                        case "Normal_BackgroundColor":
+                            e.BackgroundColor = e.Normal_BackgroundColor;
+                            break;
+                        
+                        case "MouseDown_BackgroundColor":
+                            e.BackgroundColor = e.Clicked_BackgroundColor;
+                            break;
+
+                        case "MouseUp_BackgroundColor":
+                        case "MouseEnter_BackgroundColor":
+                            e.BackgroundColor = e.MouseEnter_BackgroundColor;
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private static void Handle_UserDecision(IUIElement e)
         {
             switch (e.Transition)
             {
@@ -58,6 +85,48 @@ namespace VUI
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Transitions the UI element to a specified interaction state 
+        /// with optional delays and skipping certain states.
+        /// </summary>
+        /// <param name="msDelayBefore">The delay in milliseconds before 
+        /// the transition.</param>
+        /// <param name="_interactionState">The interaction state to 
+        /// transition to.</param>
+        /// <param name="msDelayAfter">The delay in milliseconds after 
+        /// the transition.</param>
+        /// <param name="_skippingTransitionStates">The states to be 
+        /// skipped during the transition.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        public static async Task TransitionTo(IUIElement e, int msDelayBefore, string _interactionState, int msDelayAfter,
+            string[] _skippingTransitionStates)
+        {
+            switch (e.TransitionType)
+            {
+                case "UIState":
+
+                    break;
+
+                case "UserDecision":
+
+                    e.SkipTransitionStates = _skippingTransitionStates;
+
+                    await Task.Delay(msDelayBefore);
+                    e.InteractionState = _interactionState;
+
+                    TransitionManager.Handle(e);
+
+                    await Task.Delay(msDelayAfter);
+
+                    break;
+            }
+        }
+
+        public static void StopTransition(IUIElement e)
+        {
+            e.SkipTransitionStates = [];
         }
     }
 }
