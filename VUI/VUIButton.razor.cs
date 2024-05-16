@@ -150,15 +150,17 @@ namespace VUI
             
             set
             {
-                if (backgroundColor != value && value is not null)
+                if (backgroundColor != value && !string.IsNullOrEmpty(value))
                 {
                     backgroundColor = value;
+                    StateHasChanged();
                 }
             } 
         }
 
 
         private string interactionState = "Normal";
+        [Parameter]
         public string InteractionState
         {
             get => interactionState;
@@ -173,6 +175,7 @@ namespace VUI
 
 
         private string transition = "Color";
+        [Parameter]
         public string Transition 
         { 
             get => transition; 
@@ -186,6 +189,7 @@ namespace VUI
         }
 
         private string transitionType = "UIState";
+        [Parameter]
         public string TransitionType 
         { 
             get => transitionType; 
@@ -309,39 +313,14 @@ namespace VUI
         }
 
         string[] skipTransitionStates = [];
-
-
-        /// <summary>
-        /// Transitions the UI element to a specified interaction state 
-        /// with optional delays and skipping certain states.
-        /// </summary>
-        /// <param name="msDelayBefore">The delay in milliseconds before 
-        /// the transition.</param>
-        /// <param name="_interactionState">The interaction state to 
-        /// transition to.</param>
-        /// <param name="msDelayAfter">The delay in milliseconds after 
-        /// the transition.</param>
-        /// <param name="_skippingTransitionStates">The states to be 
-        /// skipped during the transition.</param>
-        /// <returns>A Task representing the asynchronous operation.</returns>
-        public async Task TransitionTo(int msDelayBefore, string _interactionState, int msDelayAfter,
-            string[] _skippingTransitionStates)
+        public string[] SkipTransitionStates
         {
-            skipTransitionStates = _skippingTransitionStates;
-
-            await Task.Delay(msDelayBefore);
-            InteractionState = _interactionState;
-
-            TransitionManager.Handle(this);
-
-            StateHasChanged();
-            await Task.Delay(msDelayAfter);
-        }
-
-        public void StopTransition()
-        {
-            skipTransitionStates = [];
-            StateHasChanged();
-        }
+            get => skipTransitionStates;
+            set
+            {
+                skipTransitionStates = value;
+                StateHasChanged();
+            }
+        }        
     }
 }
