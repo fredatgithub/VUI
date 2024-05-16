@@ -5,11 +5,7 @@ namespace VUI
     public partial class VUIButton : IUIElement
     {
 
-        private string contentType = "text";
-
-        /// <summary>
-        /// <para>"text": the Button has the content as text.</para>
-        /// </summary>
+        private string contentType = "Text";
         [Parameter]
         public string ContentType
         {

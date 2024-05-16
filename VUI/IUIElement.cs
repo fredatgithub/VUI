@@ -52,7 +52,16 @@ namespace VUI
         /// </summary>
         string InteractionState { get; set; }
 
-
+        /// <summary>
+        /// <list type="bullet">
+        /// <item>
+        /// <description>"Text": the Button has the content as text.</description>
+        /// </item>
+        /// <item>
+        /// <description>"Image": the Button has the content as image.</description>
+        /// </item>
+        /// </list>
+        /// </summary>
         string ContentType { get; set; }
 
 
