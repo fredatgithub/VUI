@@ -166,7 +166,7 @@ namespace VUI
             get => interactionState;
             set
             {
-                if (interactionState != value && value is not null)
+                if (interactionState != value && !string.IsNullOrEmpty(value))
                 {
                     interactionState = value;
                 }
