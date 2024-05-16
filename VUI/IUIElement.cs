@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VUI
 {
-    internal interface IUIElement
+    public interface IUIElement
     {
         //
         // Define the properties that all UI elements should have
@@ -108,24 +108,17 @@ namespace VUI
         string TransitionType { get; set; }
 
 
+        /// <summary>
+        /// Stores a list of transition states that should be skipped or ignored in some process.
+        /// </summary>
+        string[] SkipTransitionStates { get; set; }
+
+
         //
         // Define the methods that all UI elements should implement
         //
         Task InternalOnClicked();
         Task InternalOnMouseEnter();
         Task InternalOnMouseLeave();
-
-
-        /// <summary>
-        /// Invoking this function changes the InteractionState to the provided _interactionState.
-        /// It also prevents further changes to the InteractionState by users.
-        /// Developers can resume changes to the InteractionState by calling the StopTransition() method.
-        /// </summary>
-        /// <param name="_interactionState">The state to which the InteractionState will transition.</param>
-        /// <returns>A Task representing the asynchronous operation.</returns>
-        Task TransitionTo(int msDelayBefore, string _interactionState, int msDelayAfter,
-            string[] _transitionStates);
-
-        void StopTransition();
     }
 }
