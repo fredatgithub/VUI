@@ -4,7 +4,6 @@ namespace VUI
 {
     public partial class VUIButton : IUIElement
     {
-
         private string contentType = "Text";
         [Parameter]
         public string ContentType
@@ -21,124 +20,25 @@ namespace VUI
 
 
         [Parameter] public string Text { get; set; } = "Button";
-        [Parameter] public EventCallback<VUIButton> OnClicked { get; set; }
-        [Parameter] public EventCallback<VUIButton> OnToggled { get; set; }
-        [Parameter] public EventCallback<VUIButton> OnMouseEnter { get; set; }
-        [Parameter] public EventCallback<VUIButton> OnMouseLeave { get; set; }
-        [Parameter] public EventCallback<VUIButton> OnMouseUp { get; set; }
-        [Parameter] public EventCallback<VUIButton> OnMouseDown { get; set; }
 
 
-        private string mouseEnter_BackgroundColor = "unset";
-        /// <summary>
-        /// Gets and sets the Background-Color that is applied when 
-        /// the mouse enters the component's area.
-        /// </summary>
+        public string contentPath = string.Empty;
         [Parameter]
-        public string MouseEnter_BackgroundColor
+        public string ContentPath
         {
-            get => mouseEnter_BackgroundColor;
+            get => contentPath;
             set
             {
-                if (mouseEnter_BackgroundColor != value && value is not null)
+                if (contentPath != value && !string.IsNullOrEmpty(value))
                 {
-                    mouseEnter_BackgroundColor = value;
+                    contentPath = value;
+                    StateHasChanged();
                 }
             }
         }
 
-        private string mouseLeave_BackgroundColor = "unset";
-        [Parameter]
-        public string MouseLeave_BackgroundColor
-        {
-            get => mouseLeave_BackgroundColor;
-            set
-            {
-                if (mouseLeave_BackgroundColor != value && value is not null)
-                {
-                    mouseLeave_BackgroundColor = value;
-                }
-            }
-        }
-
-        private string mouseDown_BackgroundColor = "unset";
-        [Parameter]
-        public string MouseDown_BackgroundColor
-        {
-            get => mouseDown_BackgroundColor;
-            set
-            {
-                if (mouseDown_BackgroundColor != value && value is not null)
-                {
-                    mouseDown_BackgroundColor = value;
-                }
-            }
-        }
-
-        private string mouseUp_BackgroundColor = "unset";
-        [Parameter]
-        public string MouseUp_BackgroundColor
-        {
-            get => mouseUp_BackgroundColor;
-            set
-            {
-                if (mouseUp_BackgroundColor != value && value is not null)
-                {
-                    mouseUp_BackgroundColor = value;
-                }
-            }
-        }
-
-
-        private string normal_BackgroundColor = "unset";
-        /// <summary>
-        /// Gets and sets the Background-Color that is applied when
-        /// nothing happens on the component's area.
-        /// </summary>
-        [Parameter]
-        public string Normal_BackgroundColor
-        {
-            get => normal_BackgroundColor;
-            set
-            {
-                if (normal_BackgroundColor != value && value is not null)
-                {
-                    normal_BackgroundColor = value;
-                }
-            }
-        }
-
-
-        private string clicked_BackgroundColor = "unset";
-        [Parameter]
-        public string Clicked_BackgroundColor 
-        {
-            get => clicked_BackgroundColor;
-            set
-            {
-                if (clicked_BackgroundColor != value && value is not null)
-                {
-                    clicked_BackgroundColor = value;
-                }
-            }
-        }
-
-        private string toggled_BackgroundColor = "unset";
-        [Parameter]
-        public string Toggled_BackgroundColor 
-        {
-            get => toggled_BackgroundColor;
-            set
-            {
-                if (toggled_BackgroundColor != value && value is not null)
-                {
-                    toggled_BackgroundColor = value;
-                }
-            }
-        }
-
+        
         private string backgroundColor = "unset";
-
         [Parameter]
         public string BackgroundColor
         { 
@@ -184,6 +84,7 @@ namespace VUI
             }
         }
 
+
         private string transitionType = "UIState";
         [Parameter]
         public string TransitionType 
@@ -200,115 +101,8 @@ namespace VUI
         }
 
 
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-
-            InteractionState = "Normal";
-            BackgroundColor = normal_BackgroundColor;
-        }
-
-        public async Task InternalOnClicked()
-        {
-            if (skipTransitionStates.Contains("All") || 
-                skipTransitionStates.Contains("Clicked")) 
-            { 
-                return; 
-            }
-            
-            InteractionState = "Clicked";
-
-            TransitionManager.Handle(this);
-
-            if (OnClicked.HasDelegate)
-            {
-                await OnClicked.InvokeAsync(this);
-            }
-
-            StateHasChanged();
-        }
-
-        public async Task InternalOnMouseEnter()
-        {
-            if (skipTransitionStates.Contains("All") || 
-                skipTransitionStates.Contains("MouseEnter"))
-            {
-                return;
-            }
-
-            InteractionState = "MouseEnter";
-
-            TransitionManager.Handle(this);
-
-            if (OnMouseEnter.HasDelegate)
-            {
-                await OnMouseEnter.InvokeAsync(this);
-            }
-
-            StateHasChanged();
-        }
-
-        public async Task InternalOnMouseLeave()
-        {
-            if (skipTransitionStates.Contains("All") || 
-                skipTransitionStates.Contains("MouseLeave"))
-            {
-                return;
-            }
-
-            InteractionState = "MouseLeave";
-
-            TransitionManager.Handle(this);
-
-            if (OnMouseLeave.HasDelegate)
-            {
-                await OnMouseLeave.InvokeAsync(this);
-            }
-
-            StateHasChanged();
-        }
-
-        public async Task InternalOnMouseUp()
-        {
-            if (skipTransitionStates.Contains("All") || 
-                skipTransitionStates.Contains("MouseUp"))
-            {
-                return;
-            }
-
-            InteractionState = "MouseUp";
-
-            TransitionManager.Handle(this);
-
-            if (OnMouseUp.HasDelegate)
-            {
-                await OnMouseUp.InvokeAsync(this);
-            }
-
-            StateHasChanged();
-        }
-
-        public async Task InternalOnMouseDown()
-        {
-            if (skipTransitionStates.Contains("All") || 
-                skipTransitionStates.Contains("MouseDown"))
-            {
-                return;
-            }
-
-            InteractionState = "MouseDown";
-
-            TransitionManager.Handle(this);
-
-            if (OnMouseDown.HasDelegate)
-            {
-                await OnMouseDown.InvokeAsync(this);
-            }
-
-            StateHasChanged();
-        }
-
         string[] skipTransitionStates = [];
+        [Parameter]
         public string[] SkipTransitionStates
         {
             get => skipTransitionStates;
@@ -319,18 +113,13 @@ namespace VUI
             }
         }
 
-        public string contentPath = string.Empty;
-        public string ContentPath 
-        { 
-            get => contentPath; 
-            set
-            {
-                if (contentPath != value && !string.IsNullOrEmpty(value)) 
-                {
-                    contentPath = value;
-                    StateHasChanged();
-                }
-            }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            InteractionState = "Normal";
+            BackgroundColor = normal_BackgroundColor;
         }
     }
 }
