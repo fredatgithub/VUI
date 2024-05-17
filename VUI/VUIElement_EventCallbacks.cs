@@ -9,6 +9,7 @@ namespace VUI
 {
     public partial class VUIElement : IUIElement
     {
+        [Parameter] public EventCallback<VUIElement> OnReadyToUse { get; set; }
         [Parameter] public EventCallback<VUIElement> OnClicked { get; set; }
         [Parameter] public EventCallback<VUIElement> OnToggled { get; set; }
         [Parameter] public EventCallback<VUIElement> OnMouseEnter { get; set; }
