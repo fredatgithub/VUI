@@ -241,12 +241,17 @@ namespace VUI
             }
         }
 
-        protected override void OnInitialized()
+        protected override async void OnInitialized()
         {
             base.OnInitialized();
 
             InteractionState = "Normal";
             BackgroundColor = normal_BackgroundColor;
+
+            if (OnReadyToUse.HasDelegate) 
+            {
+                await OnReadyToUse.InvokeAsync(this);
+            }
         }
     }
 }
