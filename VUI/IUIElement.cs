@@ -48,6 +48,22 @@ namespace VUI
         /// <description>"MouseUp": This state is triggered when 
         /// the mouse button is released after it was pressed over the UI element.</description>
         /// </item>
+        /// <item>
+        /// <description>"Play": This state is activated when 
+        /// the UIElement is playing media content.</description>
+        /// </item>
+        /// <item>
+        /// <description>"PlayAt": This state is activated when 
+        /// the UIElement is playing media content from a specific time point.</description>
+        /// </item>
+        /// <item>
+        /// <description>"Pause": This state is activated when 
+        /// the UIElement has paused the media playback.</description>
+        /// </item>
+        /// <item>
+        /// <description>"Stop": This state is activated when 
+        /// the UIElement has stopped the media playback, resetting it to the beginning.</description>
+        /// </item>
         /// </list>
         /// </summary>
         string InteractionState { get; set; }
