@@ -1,30 +1,5 @@
-﻿@switch(contentType)
-{
-    case "Text":
-
-        <button @onclick="InternalOnClicked"
-                @onmouseenter="InternalOnMouseEnter"
-                @onmouseleave="InternalOnMouseLeave"
-                @onmouseup="InternalOnMouseUp"
-                @onmousedown="InternalOnMouseDown"
-                style="background-color:@BackgroundColor;
-                       border:none;">
-            @Text
-        </button>
-
-        break;
-
-    case "Image":
-
-        <button @onclick="InternalOnClicked"
-                @onmouseenter="InternalOnMouseEnter"
-                @onmouseleave="InternalOnMouseLeave"
-                @onmouseup="InternalOnMouseUp"
-                @onmousedown="InternalOnMouseDown"
-                style="background-color:@BackgroundColor;
-                       border:none;">
-            <img src="@ContentPath" />
-        </button>
-
-        break;
+﻿@inherits VUIElement
+@{
+    base.BuildRenderTree(__builder);
 }
+
