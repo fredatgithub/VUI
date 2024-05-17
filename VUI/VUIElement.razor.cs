@@ -4,6 +4,22 @@ namespace VUI
 {
     public partial class VUIElement : ComponentBase, IUIElement
     {
+        private static int videoNumber = 0;
+
+        string mediaID = null;
+        public string MediaID
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(mediaID)) 
+                {
+                    mediaID = $"MediaID{videoNumber++}";
+                }
+
+                return mediaID ;
+            }            
+        }
+
         private string contentType = "Text";
         [Parameter]
         public string ContentType
