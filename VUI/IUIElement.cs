@@ -131,6 +131,14 @@ namespace VUI
         /// </summary>
         string[] SkipTransitionStates { get; set; }
 
+        string Border { get; set; }
+        string Display { get; set; }
+        string Width { get; set; }
+        string Height { get; set; }
+        string Cursor { get; set; }
+        string Position { get; set; }
+        string VerticalAlign { get; set; }
+        string HorizontalAlign { get; set; }
 
         //
         // Define the methods that all UI elements should implement
