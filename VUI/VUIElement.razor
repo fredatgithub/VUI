@@ -1,4 +1,8 @@
-﻿@switch (contentType)
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+
+@switch (contentType)
 {
     case "Text":
 
@@ -46,6 +50,8 @@
 
     case "Video":
 
+        
+
         <div @onclick="InternalOnClicked"
              @onmouseenter="InternalOnMouseEnter"
              @onmouseleave="InternalOnMouseLeave"
@@ -61,12 +67,32 @@
                     cursor:@Cursor;
                     user-select:none;">
 
-            <video disablePictureInPicture src="@ContentPath"
+            <video id="@MediaID" disablePictureInPicture src="@ContentPath"
                    style="max-width: 100%; max-height: 100%;
                           position: absolute;
                           top: 50%; left: 50%; vertical-align: top;
                           transform: translate(-50%, -50%);" />
         </div>
+
+        <script>
+            window.playVideo = (MediaID) => {
+                var video = document.getElementById(MediaID);
+
+                if (video) { 
+                    video.play();
+                }
+            }
+
+            window.pauseVideo = (MediaID) => {
+                var video = document.getElementById(MediaID);
+
+                if (video) {
+                    video.pause();
+                }
+
+            }
+        </script>
+
 
         break;
 }
