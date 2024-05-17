@@ -113,6 +113,117 @@ namespace VUI
             }
         }
 
+        string cursor = "default";
+        [Parameter]
+        public string Cursor 
+        { 
+            get => cursor; 
+            set
+            {
+                if (cursor != value && !string.IsNullOrEmpty(value)) 
+                {
+                    cursor = value;
+                }
+            }
+        }
+
+        string border = "none";
+        [Parameter]
+        public string Border 
+        { 
+            get => border;
+            set
+            {
+                if (border != value && !string.IsNullOrEmpty(value))
+                {
+                    border = value;
+                }
+            }
+        }
+
+        string display = "inline-block";
+        [Parameter]
+        public string Display 
+        { 
+            get => display; 
+            set
+            {
+                if (display != value && !string.IsNullOrEmpty(value))
+                {
+                    display = value;
+                }
+            }
+        }
+
+        public string width = "auto";
+        [Parameter]
+        public string Width 
+        { 
+            get => width; 
+            set
+            {
+                if (width  != value && !string.IsNullOrEmpty(value))
+                {
+                    width = value;
+                }
+            }
+        }
+
+        private string height = "auto";
+        [Parameter]
+        public string Height 
+        { 
+            get => height;
+            set
+            {
+                if (height != value && !string.IsNullOrEmpty(value))
+                {
+                    height = value;
+                }
+            }
+        }
+
+        string position = "relative";
+        [Parameter]
+        public string Position 
+        { 
+            get => position; 
+            set
+            {
+                if (position != value && !string.IsNullOrEmpty(value))
+                {
+                    position = value;
+                }
+            }
+        }
+
+        string verticalAlign = "top";
+        [Parameter]
+        public string VerticalAlign 
+        { 
+            get => verticalAlign; 
+            set
+            {
+                if (verticalAlign != value && !string.IsNullOrEmpty(value))
+                {
+                    verticalAlign = value;
+                }
+            }
+        }
+
+        string horizontalAlign = "";
+        [Parameter]
+        public string HorizontalAlign 
+        { 
+            get => horizontalAlign; 
+            set
+            {
+                if (horizontalAlign != value && !string.IsNullOrEmpty(value))
+                {
+                    horizontalAlign = value;
+                }
+            }
+        }
 
         protected override void OnInitialized()
         {
