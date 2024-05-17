@@ -5,6 +5,8 @@ namespace VUI
         protected override void OnInitialized()
         {
             base.OnInitialized();
+
+            Cursor = "pointer";
         }
     }
 }
