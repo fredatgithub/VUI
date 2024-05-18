@@ -42,7 +42,7 @@ namespace VUI
         }
 
 
-        [Parameter] public string Text { get; set; } = "Button";
+        [Parameter] public string Text { get; set; } = "";
 
 
         public string contentPath = string.Empty;
