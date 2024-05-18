@@ -13,6 +13,9 @@ namespace VUI
         // Define the properties that all UI elements should have
         //
 
+        string ID { get; set; }
+
+
         /// <summary>
         /// Represents the interaction state of a UI element. 
         /// The possible states are:

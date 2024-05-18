@@ -4,6 +4,21 @@ namespace VUI
 {
     public partial class VUIElement : ComponentBase, IUIElement
     {
+        string id = "";
+        [Parameter]
+        public string ID
+        {
+            get => id;
+            set
+            {
+                if (string.IsNullOrEmpty(id) && string.IsNullOrEmpty(value)) 
+                {
+                    id = value;
+                }
+            }
+        }
+
+
         private static int mediaCounting = 0;
         private static string digitSeparator = "";
 
