@@ -111,6 +111,19 @@ namespace VUI
         string BackgroundColor { get; set; }
 
 
+        string MouseEnter_Color { get; set; }
+        string MouseLeave_Color { get; set; }
+        string MouseDown_Color { get; set; }
+        string MouseUp_Color { get; set; }
+
+        string Normal_Color { get; set; }
+        string Clicked_Color { get; set; }
+        string Toggled_Color { get; set; }
+
+        string Color { get; set; }
+
+
+
         /// <summary>
         /// Represents the transition of a UI element. 
         /// The possible transitions are:
