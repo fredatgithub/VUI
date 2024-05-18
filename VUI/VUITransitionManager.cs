@@ -7,7 +7,7 @@ using static System.TimeZoneInfo;
 
 namespace VUI
 {
-    public static class TransitionManager
+    public static class VUITransitionManager
     {
         internal static void Handle(IUIElement e)
         {
@@ -163,7 +163,7 @@ namespace VUI
                     await Task.Delay(msDelayBefore);
                     e.InteractionState = _interactionState;
 
-                    TransitionManager.Handle(e);
+                    VUITransitionManager.Handle(e);
 
                     await Task.Delay(msDelayAfter);
 

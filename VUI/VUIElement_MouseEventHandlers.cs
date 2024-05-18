@@ -18,7 +18,7 @@ namespace VUI
 
             InteractionState = "Clicked";
 
-            TransitionManager.Handle(this);
+            VUITransitionManager.Handle(this);
 
             if (OnClicked.HasDelegate)
             {
@@ -38,7 +38,7 @@ namespace VUI
 
             InteractionState = "MouseEnter";
 
-            TransitionManager.Handle(this);
+            VUITransitionManager.Handle(this);
 
             if (OnMouseEnter.HasDelegate)
             {
@@ -58,7 +58,7 @@ namespace VUI
 
             InteractionState = "MouseLeave";
 
-            TransitionManager.Handle(this);
+            VUITransitionManager.Handle(this);
 
             if (OnMouseLeave.HasDelegate)
             {
@@ -78,7 +78,7 @@ namespace VUI
 
             InteractionState = "MouseUp";
 
-            TransitionManager.Handle(this);
+            VUITransitionManager.Handle(this);
 
             if (OnMouseUp.HasDelegate)
             {
@@ -98,7 +98,7 @@ namespace VUI
 
             InteractionState = "MouseDown";
 
-            TransitionManager.Handle(this);
+            VUITransitionManager.Handle(this);
 
             if (OnMouseDown.HasDelegate)
             {
