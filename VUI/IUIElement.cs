@@ -71,10 +71,16 @@ namespace VUI
         /// <summary>
         /// <list type="bullet">
         /// <item>
-        /// <description>"Text": the Button has the content as text.</description>
+        /// <description>"Text": the UIElement contains text content.</description>
         /// </item>
         /// <item>
-        /// <description>"Image": the Button has the content as image.</description>
+        /// <description>"Image": the UIElement displays an image.</description>
+        /// </item>
+        /// <item>
+        /// <description>"Video": the UIElement plays a video.</description>
+        /// </item>
+        /// <item>
+        /// <description>"Audio": the UIElement plays an audio file.</description>
         /// </item>
         /// </list>
         /// </summary>
