@@ -92,6 +92,22 @@ namespace VUI
             }
         }
 
+        private string color = "unset";
+        [Parameter]
+        public string Color
+        {
+            get => color;
+
+            set
+            {
+                if (color != value && !string.IsNullOrEmpty(value))
+                {
+                    color = value;
+                    StateHasChanged();
+                }
+            }
+        }
+
 
         private string interactionState = "Normal";
         [Parameter]
@@ -269,6 +285,7 @@ namespace VUI
 
             InteractionState = "Normal";
             BackgroundColor = normal_BackgroundColor;
+            Color = normal_Color;
 
             if (OnReadyToUse.HasDelegate) 
             {
