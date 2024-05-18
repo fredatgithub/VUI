@@ -50,8 +50,6 @@
 
     case "Video":
 
-        
-
         <div @onclick="InternalOnClicked"
              @onmouseenter="InternalOnMouseEnter"
              @onmouseleave="InternalOnMouseLeave"
@@ -75,7 +73,7 @@
         </div>
 
         <script>
-            window.playVideo = (MediaID) => {
+            window.playMedia = (MediaID) => {
                 var video = document.getElementById(MediaID);
 
                 if (video) { 
@@ -83,7 +81,7 @@
                 }
             }
 
-            window.pauseVideo = (MediaID) => {
+            window.pauseMedia = (MediaID) => {
                 var video = document.getElementById(MediaID);
 
                 if (video) {
@@ -93,6 +91,30 @@
             }
         </script>
 
+        break;
+
+    case "Audio":
+        
+        <audio id="@MediaID" src="@ContentPath"/>
+
+        <script>
+            window.playMedia = (MediaID) => {
+                var audio = document.getElementById(MediaID);
+
+                if (audio) {
+                    audio.play();
+                }
+            }
+
+            window.pauseMedia = (MediaID) => {
+                var audio = document.getElementById(MediaID);
+
+                if (audio) {
+                    audio.pause();
+                }
+
+            }
+        </script>
 
         break;
 }
