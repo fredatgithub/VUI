@@ -11,14 +11,14 @@ namespace VUI
 {
     public partial class VUIElement : ComponentBase, IUIElement
     {
-        public async Task PlayVideo()
+        public async Task PlayMedia()
         {
-            await JSRuntime.InvokeVoidAsync("playVideo", MediaID);
+            await JSRuntime.InvokeVoidAsync("playMedia", MediaID);
         }
 
-        public async Task PauseVideo()
+        public async Task PauseMedia()
         {
-            await JSRuntime.InvokeVoidAsync("pauseVideo", MediaID);
+            await JSRuntime.InvokeVoidAsync("pauseMedia", MediaID);
         }
     }
 }
