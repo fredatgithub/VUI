@@ -4,16 +4,23 @@ namespace VUI
 {
     public partial class VUIElement : ComponentBase, IUIElement
     {
-        private static int videoNumber = 0;
+        private static int mediaCounting = 0;
+        private static string digitSeparator = "";
 
-        string mediaID = null;
+        string mediaID = "";
         public string MediaID
         {
             get
             {
                 if (string.IsNullOrEmpty(mediaID)) 
                 {
-                    mediaID = $"MediaID{videoNumber++}";
+                    if (mediaCounting + 1 >= int.MaxValue) 
+                    {
+                        digitSeparator += "_";
+                        mediaCounting = 0;
+                }
+
+                    mediaID = $"MediaID{digitSeparator}{mediaCounting++}";
                 }
 
                 return mediaID ;
