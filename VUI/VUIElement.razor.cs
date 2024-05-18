@@ -18,7 +18,7 @@ namespace VUI
                     {
                         digitSeparator += "_";
                         mediaCounting = 0;
-                }
+                    }
 
                     mediaID = $"MediaID{digitSeparator}{mediaCounting++}";
                 }
@@ -259,6 +259,17 @@ namespace VUI
             {
                 await OnReadyToUse.InvokeAsync(this);
             }
+        }
+
+        /// <summary>
+        /// Resets the media counter and digit separator. 
+        /// This function should be invoked prior to navigating to a page that 
+        /// contains a VUIElement with a media ContentType, such as 'Music' or 'Video'.
+        /// </summary>
+        public static void ResetMediaCounting()
+        {
+            mediaCounting = 0;
+            digitSeparator = "";
         }
     }
 }
