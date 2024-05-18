@@ -117,5 +117,113 @@ namespace VUI
             }
         }
 
+
+        private string mouseEnter_Color = "unset";
+        /// <summary>
+        /// Gets and sets the Color that is applied when 
+        /// the mouse enters the component's area.
+        /// </summary>
+        [Parameter]
+        public string MouseEnter_Color
+        {
+            get => mouseEnter_Color;
+            set
+            {
+                if (mouseEnter_Color != value && value is not null)
+                {
+                    mouseEnter_Color = value;
+                }
+            }
+        }
+
+        private string mouseLeave_Color = "unset";
+        [Parameter]
+        public string MouseLeave_Color
+        {
+            get => mouseLeave_Color;
+            set
+            {
+                if (mouseLeave_Color != value && value is not null)
+                {
+                    mouseLeave_Color = value;
+                }
+            }
+        }
+
+        private string mouseDown_Color = "unset";
+        [Parameter]
+        public string MouseDown_Color
+        {
+            get => mouseDown_Color;
+            set
+            {
+                if (mouseDown_Color != value && value is not null)
+                {
+                    mouseDown_Color = value;
+                }
+            }
+        }
+
+        private string mouseUp_Color = "unset";
+        [Parameter]
+        public string MouseUp_Color
+        {
+            get => mouseUp_Color;
+            set
+            {
+                if (mouseUp_Color != value && value is not null)
+                {
+                    mouseUp_Color = value;
+                }
+            }
+        }
+
+
+        private string normal_Color = "unset";
+        /// <summary>
+        /// Gets and sets the Color that is applied when
+        /// nothing happens on the component's area.
+        /// </summary>
+        [Parameter]
+        public string Normal_Color
+        {
+            get => normal_Color;
+            set
+            {
+                if (normal_Color != value && value is not null)
+                {
+                    normal_Color = value;
+                }
+            }
+        }
+
+
+        private string clicked_Color = "unset";
+        [Parameter]
+        public string Clicked_Color
+        {
+            get => clicked_Color;
+            set
+            {
+                if (clicked_Color != value && value is not null)
+                {
+                    clicked_Color = value;
+                }
+            }
+        }
+
+        private string toggled_Color = "unset";
+        [Parameter]
+        public string Toggled_Color
+        {
+            get => toggled_Color;
+            set
+            {
+                if (toggled_Color != value && value is not null)
+                {
+                    toggled_Color = value;
+                }
+            }
+        }
     }
 }
