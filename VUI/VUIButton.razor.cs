@@ -8,6 +8,7 @@ namespace VUI
 
             Cursor = "pointer";
             Text = "Button";
+            Border = "1px Solid";
         }
     }
 }
