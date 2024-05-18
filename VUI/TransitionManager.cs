@@ -47,6 +47,24 @@ namespace VUI
                             e.BackgroundColor = e.MouseEnter_BackgroundColor;
                             break;
                     }
+
+                    switch (e.InteractionState + "_Color")
+                    {
+                        case "MouseLeave_Color":
+                        case "Normal_Color":
+                            e.Color = e.Normal_Color;
+                            break;
+
+                        case "MouseDown_Color":
+                            e.Color = e.Clicked_Color;
+                            break;
+
+                        case "MouseUp_Color":
+                        case "MouseEnter_Color":
+                            e.Color = e.MouseEnter_Color;
+                            break;
+                    }
+
                     break;
             }
         }
@@ -81,6 +99,33 @@ namespace VUI
 
                         case "MouseUp_BackgroundColor":
                             e.BackgroundColor = e.MouseUp_BackgroundColor;
+                            break;
+                    }
+
+                    switch (e.InteractionState + "_Color")
+                    {
+                        case "Normal_Color":
+                            e.Color = e.Normal_Color;
+                            break;
+
+                        case "Clicked_Color":
+                            e.Color = e.Clicked_Color;
+                            break;
+
+                        case "MouseLeave_Color":
+                            e.Color = e.MouseLeave_Color;
+                            break;
+
+                        case "MouseEnter_Color":
+                            e.Color = e.MouseEnter_Color;
+                            break;
+
+                        case "MouseDown_Color":
+                            e.Color = e.MouseDown_Color;
+                            break;
+
+                        case "MouseUp_Color":
+                            e.Color = e.MouseUp_Color;
                             break;
                     }
                     break;
