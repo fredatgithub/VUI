@@ -65,7 +65,7 @@ namespace VUI
         }
 
 
-        public string contentPath = string.Empty;
+        private string contentPath = string.Empty;
         [Parameter]
         public string ContentPath
         {
