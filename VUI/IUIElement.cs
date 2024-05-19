@@ -155,6 +155,18 @@ namespace VUI
         /// </item>
         /// 
         /// <item>
+        /// <description>"MediaState": This value is used when 
+        /// a state change occurs in a Media element. 
+        /// The possible state transitions for a Media element are as follows:
+        /// <para>Normal -> Play/PlayAt -> Pause -> Play -> Stop: 
+        /// This represents a typical sequence of states for a media playback scenario.</para>
+        /// <para>Normal -> Play/PlayAt -> Stop: 
+        /// This represents a scenario where the media is played and 
+        /// then stopped without being paused.</para>
+        /// </description>
+        /// </item>
+        /// 
+        /// <item>
         /// <description>"UserDecision": This allows users to decide 
         /// the action when a state change in the UI element.</description>
         /// </item>
