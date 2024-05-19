@@ -321,12 +321,21 @@ namespace VUI
             InteractionState = "Normal";
             BackgroundColor = normal_BackgroundColor;
             Color = normal_Color;
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await LoadDetails();
 
             if (OnReadyToUse.HasDelegate) 
             {
                 await OnReadyToUse.InvokeAsync(this);
             }
         }
+        }
+
 
         /// <summary>
         /// Resets the media counter and digit separator. 
