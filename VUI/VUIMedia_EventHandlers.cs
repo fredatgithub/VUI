@@ -17,13 +17,13 @@ namespace VUI
                 case "Audio":
                 case "Video":
 
-                    CurrentTime = await JSRuntime.InvokeAsync<double>(
-                        "getMediaCurrentTime", MediaID);
+                    //CurrentTime = await JSRuntime.InvokeAsync<double>(
+                    //    "getMediaCurrentTime", MediaID);
 
-                    if (OnCurrentTimeUpdate.HasDelegate)
-                    {
-                        await OnCurrentTimeUpdate.InvokeAsync(this);
-                    }
+                    //if (OnCurrentTimeUpdate.HasDelegate)
+                    //{
+                    //    await OnCurrentTimeUpdate.InvokeAsync(this);
+                    //}
 
                     break;
             }
