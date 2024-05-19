@@ -1,0 +1,70 @@
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+@inherits VUIElement
+@{
+    base.BuildRenderTree(__builder);
+}
+
+<script>
+    window.playMedia = (MediaID) => {
+        var audio = document.getElementById(MediaID);
+
+        if (audio) {
+            audio.play();
+        }
+    }
+
+    window.pauseMedia = (MediaID) => {
+        var audio = document.getElementById(MediaID);
+
+        if (audio) {
+            audio.pause();
+        }
+
+    }
+
+    window.getMediaDuration = (MediaID) => {
+
+        return new Promise((resolve) => {
+            var media = document.getElementById(MediaID);
+
+            if (media) {
+                media.onloadedmetadata = function () {
+                    resolve(media.duration);
+                };
+            }
+        });
+    }
+
+
+    window.getMediaCurrentTime = (MediaID) => {
+        return new Promise((resolve) => {
+            var media = document.getElementById(MediaID);
+
+            if (media) {
+                if (media.readyState >= 1) {
+                    // If the metadata is already loaded, resolve the promise immediately
+                    resolve(media.currentTime);
+                } else {
+                    // Otherwise, wait for the 'loadedmetadata' event
+                    media.onloadedmetadata = function () {
+                        resolve(media.currentTime);
+                    };
+                }
+            }
+        });
+    }
+
+
+    window.setMediaCurrentTime = (MediaID, _t) => {
+        var media = document.getElementById(MediaID);
+
+        if (media && media.readyState >= 1) {
+            // If the metadata is already loaded, resolve the promise immediately
+            media.currentTime = _t;
+        }
+    }
+
+
+</script>
