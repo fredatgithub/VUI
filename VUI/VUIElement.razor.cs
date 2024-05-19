@@ -155,7 +155,7 @@ namespace VUI
         public string InteractionState
         {
             get => interactionState;
-            protected set
+            internal set
             {
                 if (interactionState != value && !string.IsNullOrEmpty(value))
                 {
@@ -185,7 +185,7 @@ namespace VUI
         public string MediaState
         {
             get => mediaState;
-            protected set
+            internal set
             {
                 if (mediaState != value && !string.IsNullOrEmpty(value))
                 {
