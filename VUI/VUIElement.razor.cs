@@ -11,9 +11,9 @@ namespace VUI
             get => id;
             set
             {
-                    id = value;
-                }
+                id = value;
             }
+        }
 
 
         private static int mediaCounting = 0;
@@ -48,7 +48,7 @@ namespace VUI
             {
                 if (contentType != value && !string.IsNullOrEmpty(value))
                 {
-                    contentType = value;
+                    contentType = value;                    
                 }
             }
         }
@@ -64,8 +64,6 @@ namespace VUI
             }
         }
 
-        [Parameter] public string Text { get; set; } = "";
-
 
         public string contentPath = string.Empty;
         [Parameter]
@@ -77,7 +75,6 @@ namespace VUI
                 if (contentPath != value && !string.IsNullOrEmpty(value))
                 {
                     contentPath = value;
-                    StateHasChanged();
                 }
             }
         }
@@ -329,11 +326,11 @@ namespace VUI
             {
                 await LoadDetails();
 
-            if (OnReadyToUse.HasDelegate) 
-            {
-                await OnReadyToUse.InvokeAsync(this);
+                if (OnReadyToUse.HasDelegate)
+                {
+                    await OnReadyToUse.InvokeAsync(this);
+                }
             }
-        }
         }
 
 
@@ -346,6 +343,39 @@ namespace VUI
         {
             mediaCounting = 0;
             digitSeparator = "";
+        }
+
+
+        public virtual async Task LoadDetails()
+        {
+        }
+
+        public virtual async Task Play()
+        {
+        }
+
+        public virtual async Task Pause()
+        {
+        }
+
+        public virtual async Task GetCurrentTime(double _t)
+        {
+        }
+
+        public virtual async Task SetCurrentTime(double _t)
+        {
+        }
+
+        public virtual async Task GetCurrentTime()
+        {
+        }
+
+        public virtual async Task InternalOnPlay()
+        {
+        }
+
+        public virtual async Task InternalOnTimeUpdate()
+        {          
         }
     }
 }
