@@ -17,63 +17,6 @@ namespace VUI
 
 
         /// <summary>
-        /// Represents the interaction state of a UI element. 
-        /// The possible states are:
-        /// <list type="bullet">
-        /// <item>
-        /// <description>"All": Represents all possible states of the UI element. 
-        /// Useful for operations that all to all states.</description>
-        /// </item>
-        /// <item>
-        /// <description>"Normal": The default state of the UI element.</description>
-        /// </item>
-        /// <item>
-        /// <description>"Clicked": The state when 
-        /// the UI element is clicked.</description>
-        /// </item>
-        /// <item>
-        /// <description>"Toggled": The state when 
-        /// the UI elemnt is toggled on or off.</description>
-        /// </item>
-        /// <item>
-        /// <description>"MouseEnter": The state when 
-        /// the mouse pointer enters the UI element.</description>
-        /// </item>
-        /// <item>
-        /// <description>"MouseLeave": The state when 
-        /// the mouse pointer leaves the UI element.</description>
-        /// </item>
-        /// <item>
-        /// <description>"MouseDown": This state is triggered when 
-        /// the mouse button is pressed while the cursor is over the UI element.</description>
-        /// </item>
-        /// <item>
-        /// <description>"MouseUp": This state is triggered when 
-        /// the mouse button is released after it was pressed over the UI element.</description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        string InteractionState { get; set; }
-
-        /// <summary>
-        /// <list type="bullet">
-        /// <item>
-        /// <description>"Play": This state is activated when 
-        /// the UIElement is playing media content.</description>
-        /// </item>        
-        /// <item>
-        /// <description>"Pause": This state is activated when 
-        /// the UIElement has paused the media playback.</description>
-        /// </item>
-        /// <item>
-        /// <description>"End": This state is activated when 
-        /// the UIElement has ended the media playback, resetting it to the beginning.</description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        string MediaState { get; set; }
-
-        /// <summary>
         /// <list type="bullet">
         /// <item>
         /// <description>"Normal": The default state of the UI element.</description>
