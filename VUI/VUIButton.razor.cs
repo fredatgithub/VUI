@@ -7,7 +7,6 @@ namespace VUI
             base.OnInitialized();
 
             Cursor = "pointer";
-            Text = "Button";
             Border = "1px Solid";
         }
     }
