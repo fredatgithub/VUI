@@ -425,9 +425,6 @@ namespace VUI
         {
         }
 
-        public virtual async Task GetCurrentTime(double _t)
-        {
-        }
 
         public virtual async Task SetCurrentTime(double _t)
         {
