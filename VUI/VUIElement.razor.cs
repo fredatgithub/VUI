@@ -114,7 +114,6 @@ namespace VUI
 
 
         private string interactionState = "Normal";
-        [Parameter]
         public string InteractionState
         {
             get => interactionState;
@@ -123,6 +122,19 @@ namespace VUI
                 if (interactionState != value && !string.IsNullOrEmpty(value))
                 {
                     interactionState = value;
+                }
+            }
+        }
+
+        private string mediaState = "Normal";
+        public string MediaState
+        {
+            get => mediaState;
+            set
+            {
+                if (mediaState != value && !string.IsNullOrEmpty(value))
+                {
+                    mediaState = value;
                 }
             }
         }
