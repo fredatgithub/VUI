@@ -35,16 +35,16 @@ namespace VUI
                     {
                         case "MouseLeave_BackgroundColor":
                         case "Normal_BackgroundColor":
-                            e.BackgroundColor = e.Normal_BackgroundColor;
+                            e.SetBackgroundColor(e.Normal_BackgroundColor);
                             break;
                         
                         case "MouseDown_BackgroundColor":
-                            e.BackgroundColor = e.Clicked_BackgroundColor;
+                            e.SetBackgroundColor(e.Clicked_BackgroundColor);
                             break;
 
                         case "MouseUp_BackgroundColor":
                         case "MouseEnter_BackgroundColor":
-                            e.BackgroundColor = e.MouseEnter_BackgroundColor;
+                            e.SetBackgroundColor(e.MouseEnter_BackgroundColor);
                             break;
                     }
 
@@ -52,16 +52,16 @@ namespace VUI
                     {
                         case "MouseLeave_Color":
                         case "Normal_Color":
-                            e.Color = e.Normal_Color;
+                            e.SetColor(e.Normal_Color);
                             break;
 
                         case "MouseDown_Color":
-                            e.Color = e.Clicked_Color;
+                            e.SetColor(e.Clicked_Color);
                             break;
 
                         case "MouseUp_Color":
                         case "MouseEnter_Color":
-                            e.Color = e.MouseEnter_Color;
+                            e.SetColor(e.MouseEnter_Color);
                             break;
                     }
 
@@ -78,54 +78,54 @@ namespace VUI
                     switch (e.InteractionState + "_BackgroundColor")
                     {
                         case "Normal_BackgroundColor":
-                            e.BackgroundColor = e.Normal_BackgroundColor;
+                            e.SetBackgroundColor(e.Normal_BackgroundColor);
                             break;
 
                         case "Clicked_BackgroundColor":
-                            e.BackgroundColor = e.Clicked_BackgroundColor;
+                            e.SetBackgroundColor(e.Clicked_BackgroundColor);
                             break;
 
                         case "MouseLeave_BackgroundColor":
-                            e.BackgroundColor = e.MouseLeave_BackgroundColor;
+                            e.SetBackgroundColor(e.MouseLeave_BackgroundColor);
                             break;
 
                         case "MouseEnter_BackgroundColor":
-                            e.BackgroundColor = e.MouseEnter_BackgroundColor;
+                            e.SetBackgroundColor(e.MouseEnter_BackgroundColor);
                             break;
 
                         case "MouseDown_BackgroundColor":
-                            e.BackgroundColor = e.MouseDown_BackgroundColor;
+                            e.SetBackgroundColor(e.MouseDown_BackgroundColor);
                             break;
 
                         case "MouseUp_BackgroundColor":
-                            e.BackgroundColor = e.MouseUp_BackgroundColor;
+                            e.SetBackgroundColor(e.MouseUp_BackgroundColor);
                             break;
                     }
 
                     switch (e.InteractionState + "_Color")
                     {
                         case "Normal_Color":
-                            e.Color = e.Normal_Color;
+                            e.SetColor(e.Normal_Color);
                             break;
 
                         case "Clicked_Color":
-                            e.Color = e.Clicked_Color;
+                            e.SetColor(e.Clicked_Color);
                             break;
 
                         case "MouseLeave_Color":
-                            e.Color = e.MouseLeave_Color;
+                            e.SetColor(e.MouseLeave_Color);
                             break;
 
                         case "MouseEnter_Color":
-                            e.Color = e.MouseEnter_Color;
+                            e.SetColor(e.MouseEnter_Color);
                             break;
 
                         case "MouseDown_Color":
-                            e.Color = e.MouseDown_Color;
+                            e.SetColor(e.MouseDown_Color);
                             break;
 
                         case "MouseUp_Color":
-                            e.Color = e.MouseUp_Color;
+                            e.SetColor(e.MouseUp_Color);
                             break;
                     }
                     break;
@@ -158,7 +158,7 @@ namespace VUI
 
                 case "UserDecision":
 
-                    e.SkipTransitionStates = skipTransitionStates;
+                    e.SetSkipTransitionStates(skipTransitionStates);
 
                     await Task.Delay(msDelayBefore);
                     e.InteractionState = _interactionState;
@@ -173,7 +173,7 @@ namespace VUI
 
         public static void StopTransition(VUIElement e)
         {
-            e.SkipTransitionStates = [];
+            e.SetSkipTransitionStates([]);
         }
     }
 }

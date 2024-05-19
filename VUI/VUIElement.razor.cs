@@ -43,40 +43,29 @@ namespace VUI
         [Parameter]
         public string ContentType
         {
-            get => contentType;
-            set
-            {
-                if (contentType != value && !string.IsNullOrEmpty(value))
-                {
-                    contentType = value;                    
-                }
-            }
+            get { return contentType; }
+            set { contentType = value; }
         }
+
 
         private string text = "";
         [Parameter] public string Text 
         { 
             get => text; 
-            set
-            {
-                text = value;
-                StateHasChanged();
-            }
+            set { text = value; }
         }
 
+        public void SetText(string value)
+        {
+            Text = value;
+        }
 
         private string contentPath = string.Empty;
         [Parameter]
         public string ContentPath
         {
             get => contentPath;
-            set
-            {
-                if (contentPath != value && !string.IsNullOrEmpty(value))
-                {
-                    contentPath = value;
-                }
-            }
+            set { contentPath = value; }
         }
 
 
@@ -85,15 +74,12 @@ namespace VUI
         public string BackgroundColor
         {
             get => backgroundColor;
+            set { backgroundColor = value; }
+        }
 
-            set
-            {
-                if (backgroundColor != value && !string.IsNullOrEmpty(value))
-                {
-                    backgroundColor = value;
-                    StateHasChanged();
-                }
-            }
+        public void SetBackgroundColor(string value)
+        {
+            BackgroundColor = value;
         }
 
         private string color = "unset";
@@ -101,17 +87,13 @@ namespace VUI
         public string Color
         {
             get => color;
-
-            set
-            {
-                if (color != value && !string.IsNullOrEmpty(value))
-                {
-                    color = value;
-                    StateHasChanged();
-                }
-            }
+            set { color = value; }
         }
 
+        public void SetColor(string value)
+        {
+            Color = value;
+        }
 
         private string interactionState = "Normal";
 
@@ -200,13 +182,7 @@ namespace VUI
         public string Transition
         {
             get => transition;
-            set
-            {
-                if (transition != value && !string.IsNullOrEmpty(value))
-                {
-                    transition = value;
-                }
-            }
+            set { transition = value; }
         }
 
 
@@ -215,14 +191,7 @@ namespace VUI
         public string TransitionType
         {
             get => transitionType;
-            set
-            {
-                if (transitionType != value &&
-                    !string.IsNullOrEmpty(value))
-                {
-                    transitionType = value;
-                }
-            }
+            set { transitionType = value; }
         }
 
 
@@ -231,11 +200,12 @@ namespace VUI
         public string[] SkipTransitionStates
         {
             get => skipTransitionStates;
-            set
-            {
-                skipTransitionStates = value;
-                StateHasChanged();
-            }
+            set { skipTransitionStates = value; }
+        }
+
+        public void SetSkipTransitionStates(string[] values)
+        {
+            SkipTransitionStates = values;
         }
 
         string cursor = "default";
@@ -243,13 +213,7 @@ namespace VUI
         public string Cursor 
         { 
             get => cursor; 
-            set
-            {
-                if (cursor != value && !string.IsNullOrEmpty(value)) 
-                {
-                    cursor = value;
-                }
-            }
+            set { cursor = value; }
         }
 
         string border = "none";
@@ -257,13 +221,7 @@ namespace VUI
         public string Border 
         { 
             get => border;
-            set
-            {
-                if (border != value && !string.IsNullOrEmpty(value))
-                {
-                    border = value;
-                }
-            }
+            set { border = value; }
         }
 
         string display = "inline-block";
@@ -271,13 +229,7 @@ namespace VUI
         public string Display 
         { 
             get => display; 
-            set
-            {
-                if (display != value && !string.IsNullOrEmpty(value))
-                {
-                    display = value;
-                }
-            }
+            set { display = value; }
         }
 
         public string width = "auto";
@@ -285,13 +237,7 @@ namespace VUI
         public string Width 
         { 
             get => width; 
-            set
-            {
-                if (width  != value && !string.IsNullOrEmpty(value))
-                {
-                    width = value;
-                }
-            }
+            set { width = value; }
         }
 
         private string height = "auto";
@@ -299,13 +245,7 @@ namespace VUI
         public string Height 
         { 
             get => height;
-            set
-            {
-                if (height != value && !string.IsNullOrEmpty(value))
-                {
-                    height = value;
-                }
-            }
+            set { height = value; }
         }
 
         string position = "relative";
@@ -313,13 +253,7 @@ namespace VUI
         public string Position 
         { 
             get => position; 
-            set
-            {
-                if (position != value && !string.IsNullOrEmpty(value))
-                {
-                    position = value;
-                }
-            }
+            set { position = value; }
         }
 
         string verticalAlign = "top";
@@ -327,13 +261,7 @@ namespace VUI
         public string VerticalAlign 
         { 
             get => verticalAlign; 
-            set
-            {
-                if (verticalAlign != value && !string.IsNullOrEmpty(value))
-                {
-                    verticalAlign = value;
-                }
-            }
+            set { verticalAlign = value; }
         }
 
         string horizontalAlign = "";
@@ -341,13 +269,7 @@ namespace VUI
         public string HorizontalAlign 
         { 
             get => horizontalAlign; 
-            set
-            {
-                if (horizontalAlign != value && !string.IsNullOrEmpty(value))
-                {
-                    horizontalAlign = value;
-                }
-            }
+            set { horizontalAlign = value; }
         }
 
         double duration;
@@ -355,13 +277,7 @@ namespace VUI
         public double Duration
         {
             get => duration;
-            set
-            {
-                if (value >= 0 && value < double.MaxValue)
-                {
-                    duration = value;
-                }
-            }
+            set { duration = value; }
         }
 
         double currentTime;
@@ -369,16 +285,10 @@ namespace VUI
         public double CurrentTime
         {
             get => currentTime;
-            set
-            {
-                if (value >= 0 && value < double.MaxValue)
-                {
-                    currentTime = value;
-                }
-            }
+            set { currentTime = value; }
         }
 
-        protected override async void OnInitialized()
+        protected override void OnInitialized()
         {
             base.OnInitialized();
 
@@ -413,41 +323,50 @@ namespace VUI
         }
 
 
-        public virtual async Task LoadDetails()
+        public virtual Task LoadDetails()
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task Play()
+        public virtual Task Play()
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task Pause()
+        public virtual Task Pause()
         {
+            return Task.CompletedTask;
         }
 
 
-        public virtual async Task SetCurrentTime(double _t)
+        public virtual Task SetCurrentTime(double _t)
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task GetCurrentTime()
+        public virtual Task GetCurrentTime()
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task InternalOnPlay()
+        public virtual Task InternalOnPlay()
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task InternalOnPause()
+        public virtual Task InternalOnPause()
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task InternalOnEnded()
+        public virtual Task InternalOnEnded()
         {
+            return Task.CompletedTask;
         }
 
-        public virtual async Task InternalOnTimeUpdate()
-        {          
+        public virtual Task InternalOnTimeUpdate()
+        {
+            return Task.CompletedTask;
         }
     }
 }
