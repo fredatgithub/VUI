@@ -9,7 +9,7 @@ namespace VUI
 {
     public static class VUITransitionManager
     {
-        internal static void Handle(IUIElement e)
+        internal static void Handle(VUIElement e)
         {
             switch (e.TransitionType)
             {
@@ -25,7 +25,7 @@ namespace VUI
             }
         }
 
-        private static void Handle_UIState(IUIElement e)
+        private static void Handle_UIState(VUIElement e)
         {
             switch (e.Transition)
             {
@@ -69,7 +69,7 @@ namespace VUI
             }
         }
 
-        private static void Handle_UserDecision(IUIElement e)
+        private static void Handle_UserDecision(VUIElement e)
         {
             switch (e.Transition)
             {
@@ -147,7 +147,7 @@ namespace VUI
         /// <param name="skipTransitionStates">The states to be 
         /// skipped during the transition.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        public static async Task TransitionTo(IUIElement e, int msDelayBefore, string _interactionState, int msDelayAfter,
+        public static async Task TransitionTo(VUIElement e, int msDelayBefore, string _interactionState, int msDelayAfter,
             string[] skipTransitionStates)
         {
             switch (e.TransitionType)
@@ -171,7 +171,7 @@ namespace VUI
             }
         }
 
-        public static void StopTransition(IUIElement e)
+        public static void StopTransition(VUIElement e)
         {
             e.SkipTransitionStates = [];
         }
