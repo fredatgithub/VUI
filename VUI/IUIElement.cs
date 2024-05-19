@@ -178,11 +178,22 @@ namespace VUI
         string VerticalAlign { get; set; }
         string HorizontalAlign { get; set; }
 
+
+        //
+        // Media
+        //
+        double Duration { get; set; }
+        double CurrentTime {  get; set; }
+
+
         //
         // Define the methods that all UI elements should implement
         //
         Task InternalOnClicked();
         Task InternalOnMouseEnter();
         Task InternalOnMouseLeave();
+
+        Task InternalOnPlay();
+        Task InternalOnTimeUpdate();        
     }
 }
