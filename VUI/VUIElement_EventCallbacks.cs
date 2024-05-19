@@ -18,5 +18,8 @@ namespace VUI
         [Parameter] public EventCallback<VUIElement> OnMouseDown { get; set; }
 
         [Parameter] public EventCallback<VUIElement> OnCurrentTimeUpdate { get; set; }
+        [Parameter] public EventCallback<VUIElement> OnPlay { get; set; }
+        [Parameter] public EventCallback<VUIElement> OnPause { get; set; }
+        [Parameter] public EventCallback<VUIElement> OnEnd { get; set; }
     }
 }

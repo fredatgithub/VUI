@@ -12,22 +12,77 @@ namespace VUI
     {
         public override async Task InternalOnPlay()
         {
+            if (SkipTransitionStates.Contains("All") ||
+                SkipTransitionStates.Contains("Play"))
+            {
+                return;
+            }
+
             switch (ContentType)
             {
                 case "Audio":
                 case "Video":
 
-                    //CurrentTime = await JSRuntime.InvokeAsync<double>(
-                    //    "getMediaCurrentTime", MediaID);
+                    MediaState = "Play";
 
-                    //if (OnCurrentTimeUpdate.HasDelegate)
-                    //{
-                    //    await OnCurrentTimeUpdate.InvokeAsync(this);
-                    //}
+                    if (OnPlay.HasDelegate)
+                    {
+                        await OnPlay.InvokeAsync(this);
+                    }
 
                     break;
             }
         }
+
+        public override async Task InternalOnPause()
+        {
+            if (SkipTransitionStates.Contains("All") ||
+                SkipTransitionStates.Contains("Pause"))
+            {
+                return;
+            }
+
+            switch (ContentType)
+            {
+                case "Audio":
+                case "Video":
+
+                    MediaState = "Pause";
+
+                    if (OnPause.HasDelegate)
+                    {
+                        await OnPause.InvokeAsync(this);
+                    }
+
+                    break;
+            }
+        }
+
+        public override async Task InternalOnEnded()
+        {
+            if (SkipTransitionStates.Contains("All") ||
+                SkipTransitionStates.Contains("End"))
+            {
+                return;
+            }
+
+            switch (ContentType)
+            {
+                case "Audio":
+                case "Video":
+
+                    MediaState = "End";
+
+                    if (OnEnd.HasDelegate)
+                    {
+                        await OnEnd.InvokeAsync(this);
+                    }
+
+                    MediaState = "Normal";
+                    break;
+            }
+        }
+
 
         public override async Task InternalOnTimeUpdate()
         {
