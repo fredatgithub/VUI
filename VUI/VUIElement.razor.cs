@@ -11,12 +11,9 @@ namespace VUI
             get => id;
             set
             {
-                if (string.IsNullOrEmpty(id) && string.IsNullOrEmpty(value)) 
-                {
                     id = value;
                 }
             }
-        }
 
 
         private static int mediaCounting = 0;
