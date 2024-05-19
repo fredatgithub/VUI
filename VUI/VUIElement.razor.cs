@@ -53,6 +53,16 @@ namespace VUI
             }
         }
 
+        private string text = "";
+        [Parameter] public string Text 
+        { 
+            get => text; 
+            set
+            {
+                text = value;
+                StateHasChanged();
+            }
+        }
 
         [Parameter] public string Text { get; set; } = "";
 
@@ -272,6 +282,34 @@ namespace VUI
                 if (horizontalAlign != value && !string.IsNullOrEmpty(value))
                 {
                     horizontalAlign = value;
+                }
+            }
+        }
+
+        double duration;
+        [Parameter]
+        public double Duration
+        {
+            get => duration;
+            set
+            {
+                if (value >= 0 && value < double.MaxValue)
+                {
+                    duration = value;
+                }
+            }
+        }
+
+        double currentTime;
+        [Parameter]
+        public double CurrentTime
+        {
+            get => currentTime;
+            set
+            {
+                if (value >= 0 && value < double.MaxValue)
+                {
+                    currentTime = value;
                 }
             }
         }
