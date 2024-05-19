@@ -73,6 +73,8 @@
                    src="@ContentPath"
 
                    @onplay="InternalOnPlay"
+                   @onpause="InternalOnPause"
+                   @onended="InternalOnEnded"
                    @ontimeupdate="InternalOnTimeUpdate"
                    style="max-width: 100%; max-height: 100%;
                           position: absolute;
@@ -86,6 +88,8 @@
         
         <audio id="@MediaID" src="@ContentPath"
                @onplay="InternalOnPlay"
+               @onpause="InternalOnPause"
+               @onended="InternalOnEnded"
                @ontimeupdate="InternalOnTimeUpdate" />
 
         break;

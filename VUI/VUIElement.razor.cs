@@ -374,6 +374,14 @@ namespace VUI
         {
         }
 
+        public virtual async Task InternalOnPause()
+        {
+        }
+
+        public virtual async Task InternalOnEnded()
+        {
+        }
+
         public virtual async Task InternalOnTimeUpdate()
         {          
         }
