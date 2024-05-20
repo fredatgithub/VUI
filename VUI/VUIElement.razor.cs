@@ -138,7 +138,7 @@ namespace VUI
         {
             get => interactionState;
             set { interactionState = value; }
-                }
+        }
 
         private string mediaState = "Normal";
 
@@ -162,7 +162,7 @@ namespace VUI
         {
             get => mediaState;
             set { mediaState = value; }
-                }
+        }
 
 
         private string transition = "Color";
@@ -276,6 +276,15 @@ namespace VUI
             set { currentTime = value; }
         }
 
+        double playbackRate;
+        [Parameter]
+        public double PlaybackRate
+        {
+            get => playbackRate;
+            set { playbackRate = value; }
+        }
+
+
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -336,6 +345,17 @@ namespace VUI
         {
             return Task.CompletedTask;
         }
+
+        public virtual Task SetPlaybackRate(double _t)
+        {
+            return Task.CompletedTask;
+        }
+
+        public virtual Task GetPlaybackRate()
+        {
+            return Task.CompletedTask;
+        }
+
 
         public virtual Task InternalOnPlay()
         {
