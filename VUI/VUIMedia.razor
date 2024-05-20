@@ -8,18 +8,21 @@
 
 <script>
     window.playMedia = (MediaID) => {
-        var audio = document.getElementById(MediaID);
+        var media = document.getElementById(MediaID);
 
-        if (audio) {
-            audio.play();
+        if (media) {
+            media.play();
         }
     }
 
     window.pauseMedia = (MediaID) => {
-        var audio = document.getElementById(MediaID);
+        var media = document.getElementById(MediaID);
 
-        if (audio) {
-            audio.pause();
+        if (media) {
+            media.pause();
+        }
+
+    }
         }
 
     }
