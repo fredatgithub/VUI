@@ -73,18 +73,25 @@ namespace VUI
 
 
         /// <summary>
-        /// Represents the transition of a UI element. 
-        /// The possible transitions are:
+        /// Represents the transition of an element, 
+        /// which can be either a UI or non-UI element. 
+        /// The possible transitions include:
         /// <list type="bullet">
         /// 
         /// <item>
-        /// <description>"None": This will not cause any action when 
-        /// a change between states of the UI element occurs.</description>
+        /// <description>"None": No action is triggered when 
+        /// the UI element changes state.</description>
         /// </item>
         /// 
         /// <item>
-        /// <description>"Color": This will change the foreground and background colors of 
-        /// one state to match the colors of another state.</description>
+        /// <description>"Color": A change in the foreground and 
+        /// background colors to match the target state is triggered when 
+        /// the UI element changes state.</description>
+        /// </item>
+        /// 
+        /// <item>
+        /// <description>"PlaybackRate": the current playback speed of 
+        /// the audio/video.</description>
         /// </item>
         /// 
         /// </list>
@@ -98,19 +105,13 @@ namespace VUI
         /// <list type="bullet">
         /// 
         /// <item>
-        /// <description>"UIState": This is triggered when 
+        /// <description>"InteractionState": This is triggered when 
         /// a state change occurs in the UI element.</description>
         /// </item>
         /// 
         /// <item>
         /// <description>"MediaState": This value is used when 
         /// a state change occurs in a Media element. 
-        /// The possible state transitions for a Media element are as follows:
-        /// <para>Normal -> Play/PlayAt -> Pause -> Play -> End: 
-        /// This represents a typical sequence of states for a media playback scenario.</para>
-        /// <para>Normal -> Play/PlayAt -> End: 
-        /// This represents a scenario where the media is played and 
-        /// then stopped without being paused.</para>
         /// </description>
         /// </item>
         /// 
