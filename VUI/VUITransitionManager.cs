@@ -165,14 +165,39 @@ namespace VUI
 
                     VUITransitionManager.Handle(e);
 
+                    // Only re-render the VUIElement
+                    //
+                    if (e.InteractionState == "Normal")
+                    {
+                        e.ReRender();
+                    }
+                    
                     await Task.Delay(msDelayAfter);
 
                     break;
             }
         }
 
+        /// <summary>
+        /// The VUIElement will be changed,
+        /// <list type="bullet">
+        /// <item>
+        /// <description>"InteractionState": Normal</description>
+        /// </item>
+        /// <item>
+        /// <description>"ReRender()": called</description>
+        /// </item>
+        /// <item>
+        /// <description>"SetSkipTransitionStates([])": called</description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="e"></param>
         public static void StopTransition(VUIElement e)
         {
+            e.InteractionState = "Normal";
+            e.ReRender();
+
             e.SetSkipTransitionStates([]);
         }
     }
