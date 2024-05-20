@@ -6,6 +6,12 @@ namespace VUI
     public partial class VUIMedia
     {
         protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            Transition = "None";
+        }
+
         public override async Task Play()
         {
             await JSRuntime.InvokeVoidAsync("playMedia", MediaID);
