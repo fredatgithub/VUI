@@ -174,7 +174,7 @@ namespace VUI
         }
 
 
-        private string transitionType = "UIState";
+        private string transitionType = "InteractionState";
         [Parameter]
         public string TransitionType
         {
