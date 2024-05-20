@@ -12,18 +12,25 @@ namespace VUI
     {
         public override async Task InternalOnPlay()
         {
-            if (SkipTransitionStates.Contains("All") ||
-                SkipTransitionStates.Contains("Play"))
+            if (MediaState == "Play")
             {
-                return;
             }
+            else
+            {
+                if (SkipStates.Contains("All") ||
+                    SkipStates.Contains("Play"))
+                {
+                    return;
+                }
+
+                MediaState = "Play";
+            }
+
 
             switch (ContentType)
             {
                 case "Audio":
                 case "Video":
-
-                    MediaState = "Play";
 
                     if (OnPlay.HasDelegate)
                     {
@@ -36,18 +43,25 @@ namespace VUI
 
         public override async Task InternalOnPause()
         {
-            if (SkipTransitionStates.Contains("All") ||
-                SkipTransitionStates.Contains("Pause"))
+            if (MediaState == "Pause")
             {
-                return;
             }
+            else
+            {
+                if (SkipStates.Contains("All") ||
+                    SkipStates.Contains("Pause"))
+                {
+                    return;
+                }
+
+                MediaState = "Pause";
+            }
+
 
             switch (ContentType)
             {
                 case "Audio":
                 case "Video":
-
-                    MediaState = "Pause";
 
                     if (OnPause.HasDelegate)
                     {
@@ -60,25 +74,31 @@ namespace VUI
 
         public override async Task InternalOnEnded()
         {
-            if (SkipTransitionStates.Contains("All") ||
-                SkipTransitionStates.Contains("End"))
+            if (MediaState == "End")
             {
-                return;
             }
+            else
+            {
+                if (SkipStates.Contains("All") ||
+                    SkipStates.Contains("End"))
+                {
+                    return;
+                }
+
+                MediaState = "End";
+            }
+
 
             switch (ContentType)
             {
                 case "Audio":
                 case "Video":
 
-                    MediaState = "End";
-
                     if (OnEnd.HasDelegate)
                     {
                         await OnEnd.InvokeAsync(this);
                     }
 
-                    MediaState = "Normal";
                     break;
             }
         }
