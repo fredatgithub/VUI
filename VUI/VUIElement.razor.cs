@@ -368,5 +368,11 @@ namespace VUI
         {
             return Task.CompletedTask;
         }
+
+
+        public virtual void ReRender()
+        {
+            StateHasChanged();
+        }
     }
 }
