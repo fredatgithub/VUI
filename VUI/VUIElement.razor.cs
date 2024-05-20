@@ -189,10 +189,6 @@ namespace VUI
             set { skipStates = value; }
         }
 
-        public void SetSkipTransitionStates(string[] values)
-        {
-            SkipStates = values;
-        }
 
         string cursor = "default";
         [Parameter]
