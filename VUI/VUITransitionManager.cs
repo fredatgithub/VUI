@@ -25,7 +25,7 @@ namespace VUI
             }
         }
 
-        private static void Handle_UIState(VUIElement e)
+        private static void Handle_InteractionState(VUIElement e)
         {
             switch (e.Transition)
             {
