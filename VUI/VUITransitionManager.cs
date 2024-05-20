@@ -250,7 +250,7 @@ namespace VUI
         /// </list>
         /// </summary>
         /// <param name="e"></param>
-        public static void StopTransition(VUIElement e)
+        public static void StopInteraction(VUIElement e)
         {
             e.InteractionState = "Normal";
             e.ReRender();
