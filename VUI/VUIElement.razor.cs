@@ -166,6 +166,7 @@ namespace VUI
 
 
         private string transition = "Color";
+        [Parameter]
         public string Transition
         {
             get => transition;
@@ -183,6 +184,7 @@ namespace VUI
 
 
         string[] skipStates = [];
+        [Parameter]
         public string[] SkipStates
         {
             get => skipStates;
