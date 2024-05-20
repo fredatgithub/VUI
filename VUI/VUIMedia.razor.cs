@@ -62,6 +62,30 @@ namespace VUI
             }
         }
 
-        
+        public override async Task GetPlaybackRate()
+        {
+            switch (ContentType)
+            {
+                case "Audio":
+                case "Video":
+
+                    PlaybackRate = await JSRuntime.InvokeAsync<double>(
+                        "getPlaybackRate", MediaID);
+                    break;
+            }
+        }
+
+        public override async Task SetPlaybackRate(double _t)
+        {
+            switch (ContentType)
+            {
+                case "Audio":
+                case "Video":
+
+                    await JSRuntime.InvokeVoidAsync(
+                        "setPlaybackRate", MediaID, _t);
+                    break;
+            }
+        }
     }
 }
