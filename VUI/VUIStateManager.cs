@@ -8,7 +8,7 @@ using static System.TimeZoneInfo;
 
 namespace VUI
 {
-    public static class VUITransitionManager
+    public static class VUIStateManager
     {
         internal static void Handle(VUIElement e)
         {

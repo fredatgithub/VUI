@@ -25,7 +25,7 @@ namespace VUI
             }
             
 
-            VUITransitionManager.Handle(this);
+            VUIStateManager.Handle(this);
 
             if (OnClicked.HasDelegate)
             {
@@ -50,7 +50,7 @@ namespace VUI
             }
 
 
-            VUITransitionManager.Handle(this);
+            VUIStateManager.Handle(this);
 
             if (OnMouseEnter.HasDelegate)
             {
@@ -75,7 +75,7 @@ namespace VUI
             }
 
 
-            VUITransitionManager.Handle(this);
+            VUIStateManager.Handle(this);
 
             if (OnMouseLeave.HasDelegate)
             {
@@ -100,7 +100,7 @@ namespace VUI
             }
 
             
-            VUITransitionManager.Handle(this);
+            VUIStateManager.Handle(this);
 
             if (OnMouseUp.HasDelegate)
             {
@@ -125,7 +125,7 @@ namespace VUI
             }
 
 
-            VUITransitionManager.Handle(this);
+            VUIStateManager.Handle(this);
 
             if (OnMouseDown.HasDelegate)
             {
