@@ -43,7 +43,7 @@ namespace VUI
                 case "Audio":
                 case "Video":
 
-                    CurrentTime = await JSRuntime.InvokeAsync<int>(
+                    CurrentTime = await JSRuntime.InvokeAsync<double>(
                         "getMediaCurrentTime", MediaID);
                     break;
             }
@@ -56,7 +56,7 @@ namespace VUI
                 case "Audio":
                 case "Video":
 
-                    await JSRuntime.InvokeAsync<int>(
+                    await JSRuntime.InvokeVoidAsync(
                         "setMediaCurrentTime", MediaID, _t);
                     break;
             }
