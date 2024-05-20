@@ -183,17 +183,17 @@ namespace VUI
         }
 
 
-        string[] skipTransitionStates = [];
+        string[] skipStates = [];
         [Parameter]
-        public string[] SkipTransitionStates
+        public string[] SkipStates
         {
-            get => skipTransitionStates;
-            set { skipTransitionStates = value; }
+            get => skipStates;
+            set { skipStates = value; }
         }
 
         public void SetSkipTransitionStates(string[] values)
         {
-            SkipTransitionStates = values;
+            SkipStates = values;
         }
 
         string cursor = "default";
