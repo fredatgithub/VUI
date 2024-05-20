@@ -23,9 +23,28 @@
         }
 
     }
-        }
 
+    window.setPlaybackRate = (MediaID, playbackSpeed) => {
+        var media = document.getElementById(MediaID);
+
+        if (media) {
+            media.playbackRate = playbackSpeed;
+        }
     }
+
+    window.getPlaybackRate = (MediaID) => {
+
+        return new Promise((resolve) => {
+            var media = document.getElementById(MediaID);
+
+            if (media) {
+                media.onloadedmetadata = function () {
+                    resolve(media.playbackRate);
+                };
+            }
+        });
+    }
+
 
     window.getMediaDuration = (MediaID) => {
 
