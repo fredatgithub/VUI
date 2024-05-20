@@ -137,14 +137,8 @@ namespace VUI
         public string InteractionState
         {
             get => interactionState;
-            internal set
-            {
-                if (interactionState != value && !string.IsNullOrEmpty(value))
-                {
-                    interactionState = value;
+            set { interactionState = value; }
                 }
-            }
-        }
 
         private string mediaState = "Normal";
 
@@ -167,14 +161,8 @@ namespace VUI
         public string MediaState
         {
             get => mediaState;
-            internal set
-            {
-                if (mediaState != value && !string.IsNullOrEmpty(value))
-                {
-                    mediaState = value;
+            set { mediaState = value; }
                 }
-            }
-        }
 
 
         private string transition = "Color";
