@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using static System.TimeZoneInfo;
@@ -13,15 +14,15 @@ namespace VUI
         {
             switch (e.TransitionType)
             {
-                case "UIState":
+                case "InteractionState":
 
-                    Handle_UIState(e);
+                    Handle_InteractionState(e);
                     break;
 
-                case "UserDecision":
+                //case "MediaState":
 
-                    Handle_UserDecision(e);
-                    break;
+                //    Handle_MediaState(e);
+                //    break;
             }
         }
 
@@ -68,6 +69,10 @@ namespace VUI
                     break;
             }
         }
+
+        //private static void Handle_MediaState(VUIElement e)
+        //{            
+        //}
 
         private static void Handle_UserDecision(VUIElement e)
         {
@@ -132,6 +137,19 @@ namespace VUI
             }
         }
 
+        private static void Handle_UserDecision(
+            VUIElement e,
+            object transitionValue)
+        {
+            switch (e.Transition)
+            {
+                case "PlaybackRate":
+
+                    e.SetPlaybackRate((double)transitionValue);
+                    break;
+            }
+        }
+
         /// <summary>
         /// Transitions the UI element to a specified interaction state 
         /// with optional delays and skipping certain states.
@@ -144,26 +162,26 @@ namespace VUI
         /// transition to.</param>
         /// <param name="msDelayAfter">The delay in milliseconds after 
         /// the transition.</param>
-        /// <param name="skipTransitionStates">The states to be 
+        /// <param name="skipStates">The states to be 
         /// skipped during the transition.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        public static async Task TransitionTo(VUIElement e, int msDelayBefore, string _interactionState, int msDelayAfter,
-            string[] skipTransitionStates)
+        public static async Task InteractionStateTo(
+            VUIElement e, 
+            int msDelayBefore, 
+            string _interactionState, 
+            int msDelayAfter,
+            string[] skipStates)
         {
             switch (e.TransitionType)
             {
-                case "UIState":
-
-                    break;
-
                 case "UserDecision":
 
-                    e.SetSkipTransitionStates(skipTransitionStates);
+                    e.SkipStates = skipStates;
 
                     await Task.Delay(msDelayBefore);
                     e.InteractionState = _interactionState;
 
-                    VUITransitionManager.Handle(e);
+                    Handle_UserDecision(e);
 
                     // Only re-render the VUIElement
                     //
@@ -177,6 +195,45 @@ namespace VUI
                     break;
             }
         }
+
+
+        /// <summary>
+        /// Transitions the UI element to a specified interaction state 
+        /// with optional delays and skipping certain states.
+        /// </summary>
+        /// <param name="e">The UI element that will be transitioned to a new InteractionState. 
+        /// The TransitionManager's Handle function will be invoked for this element.</param>
+        /// <param name="msDelayBefore">The delay in milliseconds before 
+        /// the transition.</param>
+        /// <param name="_interactionState">The interaction state to 
+        /// transition to.</param>
+        /// <param name="msDelayAfter">The delay in milliseconds after 
+        /// the transition.</param>
+        /// <param name="skipStates">The states to be 
+        /// skipped during the transition.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        public static async Task TransitionTo(
+            VUIElement e,
+            int msDelayBefore,
+            string _transition,
+            object _transitionValue,
+            int msDelayAfter)
+        {
+            switch (e.TransitionType)
+            {
+                case "UserDecision":
+
+                    await Task.Delay(msDelayBefore);
+                    e.Transition = _transition;
+
+                    Handle_UserDecision(e, _transitionValue);
+
+                    await Task.Delay(msDelayAfter);
+
+                    break;
+            }
+        }
+
 
         /// <summary>
         /// The VUIElement will be changed,
@@ -198,7 +255,7 @@ namespace VUI
             e.InteractionState = "Normal";
             e.ReRender();
 
-            e.SetSkipTransitionStates([]);
+            e.SkipStates = [];
         }
     }
 }
