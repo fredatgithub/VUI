@@ -10,13 +10,20 @@ namespace VUI
     {
         public async Task InternalOnClicked()
         {
-            if (skipTransitionStates.Contains("All") ||
-                skipTransitionStates.Contains("Clicked"))
+            if (InteractionState == "Clicked")
             {
-                return;
             }
+            else 
+            {
+                if (skipTransitionStates.Contains("All") ||
+                    skipTransitionStates.Contains("Clicked"))
+                {
+                    return;
+                }
 
-            InteractionState = "Clicked";
+                InteractionState = "Clicked";
+            }
+            
 
             VUITransitionManager.Handle(this);
 
@@ -24,19 +31,24 @@ namespace VUI
             {
                 await OnClicked.InvokeAsync(this);
             }
-
-            StateHasChanged();
         }
 
         public async Task InternalOnMouseEnter()
         {
-            if (skipTransitionStates.Contains("All") ||
-                skipTransitionStates.Contains("MouseEnter"))
+            if (InteractionState == "MouseEnter")
             {
-                return;
+            }
+            else
+            {
+                if (skipTransitionStates.Contains("All") ||
+                    skipTransitionStates.Contains("MouseEnter"))
+                {
+                    return;
+                }
+
+                InteractionState = "MouseEnter";
             }
 
-            InteractionState = "MouseEnter";
 
             VUITransitionManager.Handle(this);
 
@@ -44,19 +56,24 @@ namespace VUI
             {
                 await OnMouseEnter.InvokeAsync(this);
             }
-
-            StateHasChanged();
         }
 
         public async Task InternalOnMouseLeave()
         {
-            if (skipTransitionStates.Contains("All") ||
-                skipTransitionStates.Contains("MouseLeave"))
+            if (InteractionState == "MouseLeave")
             {
-                return;
+            }
+            else
+            {
+                if (skipTransitionStates.Contains("All") ||
+                    skipTransitionStates.Contains("MouseLeave"))
+                {
+                    return;
+                }
+
+                InteractionState = "MouseLeave";
             }
 
-            InteractionState = "MouseLeave";
 
             VUITransitionManager.Handle(this);
 
@@ -64,39 +81,49 @@ namespace VUI
             {
                 await OnMouseLeave.InvokeAsync(this);
             }
-
-            StateHasChanged();
         }
 
         public async Task InternalOnMouseUp()
         {
-            if (skipTransitionStates.Contains("All") ||
-                skipTransitionStates.Contains("MouseUp"))
+            if (InteractionState == "MouseUp")
             {
-                return;
+            }
+            else
+            {
+                if (skipTransitionStates.Contains("All") ||
+                    skipTransitionStates.Contains("MouseUp"))
+                {
+                    return;
+                }
+
+                InteractionState = "MouseUp";
             }
 
-            InteractionState = "MouseUp";
-
+            
             VUITransitionManager.Handle(this);
 
             if (OnMouseUp.HasDelegate)
             {
                 await OnMouseUp.InvokeAsync(this);
             }
-
-            StateHasChanged();
         }
 
         public async Task InternalOnMouseDown()
         {
-            if (skipTransitionStates.Contains("All") ||
-                skipTransitionStates.Contains("MouseDown"))
+            if (InteractionState == "MouseDown")
             {
-                return;
+            }
+            else
+            {
+                if (skipTransitionStates.Contains("All") ||
+                    skipTransitionStates.Contains("MouseDown"))
+                {
+                    return;
+                }
+
+                InteractionState = "MouseDown";
             }
 
-            InteractionState = "MouseDown";
 
             VUITransitionManager.Handle(this);
 
@@ -104,8 +131,6 @@ namespace VUI
             {
                 await OnMouseDown.InvokeAsync(this);
             }
-
-            StateHasChanged();
         }
     }
 }
