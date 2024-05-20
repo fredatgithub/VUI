@@ -111,7 +111,7 @@ namespace VUI
         /// 
         /// <item>
         /// <description>"MediaState": This value is used when 
-        /// a state change occurs in a Media element. 
+        /// a state change occurs in a Media element.
         /// </description>
         /// </item>
         /// 
@@ -126,9 +126,10 @@ namespace VUI
 
 
         /// <summary>
-        /// Stores a list of transition states that should be skipped or ignored in some process.
+        /// Stores a list of interaction/transition states 
+        /// that should be skipped or ignored in some process.
         /// </summary>
-        string[] SkipTransitionStates { get; set; }
+        string[] SkipStates { get; set; }
 
         string Border { get; set; }
         string Display { get; set; }
