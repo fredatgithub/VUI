@@ -15,8 +15,8 @@ namespace VUI
             }
             else 
             {
-                if (skipTransitionStates.Contains("All") ||
-                    skipTransitionStates.Contains("Clicked"))
+                if (skipStates.Contains("All") ||
+                    skipStates.Contains("Clicked"))
                 {
                     return;
                 }
@@ -40,8 +40,8 @@ namespace VUI
             }
             else
             {
-                if (skipTransitionStates.Contains("All") ||
-                    skipTransitionStates.Contains("MouseEnter"))
+                if (skipStates.Contains("All") ||
+                    skipStates.Contains("MouseEnter"))
                 {
                     return;
                 }
@@ -65,8 +65,8 @@ namespace VUI
             }
             else
             {
-                if (skipTransitionStates.Contains("All") ||
-                    skipTransitionStates.Contains("MouseLeave"))
+                if (skipStates.Contains("All") ||
+                    skipStates.Contains("MouseLeave"))
                 {
                     return;
                 }
@@ -90,8 +90,8 @@ namespace VUI
             }
             else
             {
-                if (skipTransitionStates.Contains("All") ||
-                    skipTransitionStates.Contains("MouseUp"))
+                if (skipStates.Contains("All") ||
+                    skipStates.Contains("MouseUp"))
                 {
                     return;
                 }
@@ -115,8 +115,8 @@ namespace VUI
             }
             else
             {
-                if (skipTransitionStates.Contains("All") ||
-                    skipTransitionStates.Contains("MouseDown"))
+                if (skipStates.Contains("All") ||
+                    skipStates.Contains("MouseDown"))
                 {
                     return;
                 }
