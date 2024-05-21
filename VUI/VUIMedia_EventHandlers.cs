@@ -10,7 +10,7 @@ namespace VUI
 {
     public partial class VUIMedia : VUIElement
     {
-        public override async Task InternalOnPlay()
+        internal override async Task InternalOnPlay()
         {
             if (MediaState == "Play")
             {
@@ -41,7 +41,7 @@ namespace VUI
             }
         }
 
-        public override async Task InternalOnPause()
+        internal override async Task InternalOnPause()
         {
             if (MediaState == "Pause")
             {
@@ -72,7 +72,7 @@ namespace VUI
             }
         }
 
-        public override async Task InternalOnEnded()
+        internal override async Task InternalOnEnded()
         {
             if (MediaState == "End")
             {
@@ -104,7 +104,7 @@ namespace VUI
         }
 
 
-        public override async Task InternalOnTimeUpdate()
+        internal override async Task InternalOnTimeUpdate()
         {
             switch (ContentType)
             {

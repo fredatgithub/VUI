@@ -173,6 +173,11 @@ namespace VUI
             set { transition = value; }
         }
 
+        internal void SetTransition(string _transition)
+        {
+            Transition = _transition;
+        }
+
 
         private string transitionType = "InteractionState";
         [Parameter]
@@ -191,6 +196,10 @@ namespace VUI
             set { skipStates = value; }
         }
 
+        internal void SetSkipStates(string[] _skipStates)
+        {
+            SkipStates = _skipStates;
+        }
 
         string cursor = "default";
         [Parameter]
@@ -316,7 +325,7 @@ namespace VUI
         }
 
 
-        public virtual Task LoadDetails()
+        internal virtual Task LoadDetails()
         {
             return Task.CompletedTask;
         }
@@ -337,9 +346,9 @@ namespace VUI
             return Task.CompletedTask;
         }
 
-        public virtual Task GetCurrentTime()
+        public virtual Task<double> GetCurrentTime()
         {
-            return Task.CompletedTask;
+            return Task.FromResult(0.0);
         }
 
         public virtual Task SetPlaybackRate(double _t)
@@ -353,22 +362,22 @@ namespace VUI
         }
 
 
-        public virtual Task InternalOnPlay()
+        internal virtual Task InternalOnPlay()
         {
             return Task.CompletedTask;
         }
 
-        public virtual Task InternalOnPause()
+        internal virtual Task InternalOnPause()
         {
             return Task.CompletedTask;
         }
 
-        public virtual Task InternalOnEnded()
+        internal virtual Task InternalOnEnded()
         {
             return Task.CompletedTask;
         }
 
-        public virtual Task InternalOnTimeUpdate()
+        internal virtual Task InternalOnTimeUpdate()
         {
             return Task.CompletedTask;
         }

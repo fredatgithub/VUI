@@ -22,7 +22,7 @@ namespace VUI
             await JSRuntime.InvokeVoidAsync("pauseMedia", MediaID);
         }
 
-        public override async Task LoadDetails()
+        internal override async Task LoadDetails()
         {
             switch (ContentType)
             {
@@ -36,7 +36,7 @@ namespace VUI
             }
         }
 
-        public override async Task GetCurrentTime()
+        public override async Task<double> GetCurrentTime()
         {
             switch (ContentType)
             {
@@ -47,6 +47,8 @@ namespace VUI
                         "getMediaCurrentTime", MediaID);
                     break;
             }
+
+            return CurrentTime;
         }
 
         public override async Task SetCurrentTime(double _t)

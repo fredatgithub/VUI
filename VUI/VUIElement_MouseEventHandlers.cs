@@ -8,7 +8,7 @@ namespace VUI
 {
     public partial class VUIElement : IUIElement
     {
-        public async Task InternalOnClicked()
+        private async Task InternalOnClicked()
         {
             if (InteractionState == "Clicked")
             {
@@ -33,7 +33,7 @@ namespace VUI
             }
         }
 
-        public async Task InternalOnMouseEnter()
+        private async Task InternalOnMouseEnter()
         {
             if (InteractionState == "MouseEnter")
             {
@@ -58,7 +58,7 @@ namespace VUI
             }
         }
 
-        public async Task InternalOnMouseLeave()
+        private async Task InternalOnMouseLeave()
         {
             if (InteractionState == "MouseLeave")
             {
@@ -83,7 +83,7 @@ namespace VUI
             }
         }
 
-        public async Task InternalOnMouseUp()
+        private async Task InternalOnMouseUp()
         {
             if (InteractionState == "MouseUp")
             {
@@ -108,7 +108,7 @@ namespace VUI
             }
         }
 
-        public async Task InternalOnMouseDown()
+        private async Task InternalOnMouseDown()
         {
             if (InteractionState == "MouseDown")
             {

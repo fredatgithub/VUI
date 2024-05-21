@@ -150,12 +150,6 @@ namespace VUI
 
         //
         // Define the methods that all UI elements should implement
-        //
-        Task InternalOnClicked();
-        Task InternalOnMouseEnter();
-        Task InternalOnMouseLeave();
-
-        Task InternalOnPlay();
-        Task InternalOnTimeUpdate();        
+        //      
     }
 }

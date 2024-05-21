@@ -181,7 +181,7 @@ namespace VUI
             {
                 case "UserDecision":
 
-                    e.SkipStates = skipStates;
+                    e.SetSkipStates(skipStates);
 
                     await Task.Delay(msDelayBefore);
                     e.InteractionState = _interactionState;
@@ -229,7 +229,7 @@ namespace VUI
                 case "UserDecision":
 
                     await Task.Delay(msDelayBefore);
-                    e.Transition = _transition;
+                    e.SetTransition(_transition);
 
                     Handle_UserDecision(e, _transitionValue);
 
@@ -260,7 +260,7 @@ namespace VUI
             e.InteractionState = "Normal";
             e.ReRender();
 
-            e.SkipStates = [];
+            e.SetSkipStates([]);
         }
     }
 }
