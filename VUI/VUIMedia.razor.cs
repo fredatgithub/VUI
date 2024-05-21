@@ -64,7 +64,7 @@ namespace VUI
             }
         }
 
-        public override async Task GetPlaybackRate()
+        public override async Task<double> GetPlaybackRate()
         {
             switch (ContentType)
             {
@@ -75,6 +75,8 @@ namespace VUI
                         "getPlaybackRate", MediaID);
                     break;
             }
+
+            return PlaybackRate;
         }
 
         public override async Task SetPlaybackRate(double _t)

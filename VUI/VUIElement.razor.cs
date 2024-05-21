@@ -348,7 +348,7 @@ namespace VUI
 
         public virtual Task<double> GetCurrentTime()
         {
-            return Task.FromResult(0.0);
+            return Task.FromResult(CurrentTime);
         }
 
         public virtual Task SetPlaybackRate(double _t)
@@ -356,10 +356,20 @@ namespace VUI
             return Task.CompletedTask;
         }
 
-        public virtual Task GetPlaybackRate()
+        public virtual Task<double> GetPlaybackRate()
         {
-            return Task.CompletedTask;
+            return Task.FromResult(PlaybackRate);
         }
+
+        public virtual void ReRender()
+        {
+            StateHasChanged();
+        }
+
+
+        //
+        // Internal 
+        //
 
 
         internal virtual Task InternalOnPlay()
@@ -380,12 +390,6 @@ namespace VUI
         internal virtual Task InternalOnTimeUpdate()
         {
             return Task.CompletedTask;
-        }
-
-
-        public virtual void ReRender()
-        {
-            StateHasChanged();
         }
     }
 }
